@@ -1,4 +1,4 @@
-- hi.
-- hello, man.
-- hello, dude.
-- hello
+- hi;
+- hello, man;
+- hello, dude;
+- hello;
