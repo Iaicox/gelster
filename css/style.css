@@ -4115,7 +4115,7 @@ tbody{
     }
 }
 
-/*** photogallery-general ***/
+/*** photogallery-sport ***/
 .photogallery-sport > header {
     background-image: url(/img/photogallery/sport/photogallery-in_02.jpg);
 }
@@ -4126,6 +4126,10 @@ tbody{
     -ms-grid-columns: 65.834% 2.499% 31.667%;
     grid-template-columns: 65.834% 31.667%;
     border-bottom: 4px solid #f8e6d0;
+}
+.photo-main_window aside {
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
 }
 .name-cur_project {
     margin: 45px 0 15px;
@@ -4759,12 +4763,5 @@ tbody{
     .projects_lib-item--desc h5 {
         font-size: 14px;
         line-height: 16px;
-    }
-}
-
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .photo-main_window aside {
-        -ms-grid-column: 3;
-        -ms-grid-row: 1;
     }
 }
