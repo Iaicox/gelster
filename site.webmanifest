@@ -1,0 +1,12 @@
+{
+  "short_name": "Gelster",
+  "name": "Gelster - профессиональные напольные покрытия",
+  "icons": [{
+    "src": "icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "https://www.gelster.ru/katalog.htm?utm_source=homescreen",
+  "background_color": "#353535",
+  "theme_color": "#353535"
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="52px" height="64px" viewBox="0 0 52 64" enable-background="new 0 0 52 64" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path fill="#ECAF56" d="M8.07,34.432c0,0.191-0.102,0.346-0.228,0.346h-1.76c-0.126,0-0.229-0.154-0.229-0.346V22.579
+				c0-0.19,0.102-0.345,0.229-0.345h1.76c0.125,0,0.228,0.154,0.228,0.345V34.432z"/>
+			<path fill="#ECAF56" d="M11.449,36.105c0,0.246-0.102,0.445-0.228,0.445H9.46c-0.126,0-0.229-0.199-0.229-0.445V20.906
+				c0-0.245,0.103-0.443,0.229-0.443h1.761c0.125,0,0.228,0.198,0.228,0.443V36.105z"/>
+		</g>
+		<g>
+			<path fill="#ECAF56" d="M45.208,34.432c0,0.191,0.102,0.346,0.227,0.346h1.762c0.127,0,0.229-0.154,0.229-0.346V22.579
+				c0-0.19-0.102-0.345-0.229-0.345h-1.762c-0.125,0-0.227,0.154-0.227,0.345V34.432z"/>
+			<path fill="#ECAF56" d="M41.831,36.105c0,0.246,0.102,0.445,0.227,0.445h1.76c0.127,0,0.23-0.199,0.23-0.445V20.906
+				c0-0.245-0.104-0.443-0.23-0.443h-1.76c-0.125,0-0.227,0.198-0.227,0.443V36.105z"/>
+		</g>
+		<g>
+			
+				<line fill="none" stroke="#ECAF56" stroke-linecap="square" stroke-miterlimit="10" x1="40.202" y1="29.827" x2="13.111" y2="29.827"/>
+			
+				<line fill="none" stroke="#ECAF56" stroke-linecap="square" stroke-miterlimit="10" x1="13.111" y1="27.188" x2="40.202" y2="27.188"/>
+		</g>
+		<path fill="none" stroke="#ECAF56" stroke-linecap="square" stroke-miterlimit="10" d="M4.234,29.827H1.382
+			c-0.028,0-0.049-0.214-0.049-0.48v-1.68c0-0.265,0.021-0.479,0.049-0.479h2.852"/>
+		<path fill="none" stroke="#ECAF56" stroke-linecap="square" stroke-miterlimit="10" d="M48.032,27.188h2.854
+			c0.027,0,0.049,0.215,0.049,0.479v1.68c0,0.266-0.021,0.48-0.049,0.48h-2.854"/>
+	</g>
+	
+		<line fill="none" stroke="#ECAF56" stroke-width="1.5" stroke-linecap="square" stroke-miterlimit="10" x1="47.913" y1="43.609" x2="4.356" y2="43.609"/>
+</g>
+</svg>

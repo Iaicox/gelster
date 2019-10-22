@@ -1,0 +1,364 @@
+<?php header("Content-Type:text/html;charset=utf-8");?>
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог напольных покрытий компании Гельстер</title>
+    <meta name="description" content="Торгово-строительная компания &laquo;Гельстер&raquo; предлагает широкий ассортимент напольных покрытий от ведущих мировых производителей.">
+    <meta name="keywords" content="пвх линолеум спортивный натуральный купить каталог">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#353535">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- User's CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel='stylesheet' href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="js/search/css/component.css">
+    <link rel="stylesheet" href="js/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="endLoading()">
+    <header class="sticky-top justify-content-center navbar-light-catalogue">
+        <? include('header.htm'); ?>
+    </header>
+    <main class="katalog-main gerflor-main-linol">
+        <header class="container-fluid position-relative p-0 d-flex align-items-end header-with-img katalog-main--header">
+            <div class="container px-3 px-sm-0 p-0">
+                <div class="w-50 m-0 d-flex heading-main--wrapper">
+                    <h1 class="my-auto text-uppercase">Каталог</h1>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid p-0">
+            <div class="container px-3 px-sm-0 px-3 px-sm-0">
+                <div class="row">
+                    <div class="col-12 col-sm-6 pr-0">
+                        <div class="manufacture-desc katalog-main--desc pb-4">
+                            <h3 class="text-uppercase mb-0">Торгово-строительная компания &laquo;Гельстер&raquo;</h3>
+                            <p class="text-justify m-0">предлагает широкий ассортимент напольных покрытий от ведущих мировых производителей.</p>
+                        </div>
+                    </div>
+                        <div class="col-6 row pr-lg-0 pr-md-0 ">
+                            <div class="col-12 col-md-6 pl-0 pr-0">
+                                <div class="nav-on-page pl-2 pl-lg-4 ml-2 pr-0">
+                                    <ul class="p-0 list-unstyled mb-0 mr-0 pr-0">
+                                        <li class=""><a class="d-block text-white pr-0">поставка, настил и восстанов&shy;ление напольных покрытий</a></li>
+                                        <li class="md-0"><a class="d-block pr-0">мы продаем только те материалы, в качестве которых уверены сами</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 pl-0 pr-0">
+                                <div class="nav-on-page pl-2 pl-lg-4 ml-2 pr-0">
+                                    <ul class="p-0 list-unstyled mb-0 mr-0 pr-3">
+                                        <li class=""><a class="d-block pr-0">работы по сложной дизай&shy;нерской укладке покрытий</a></li>
+                                        <li class="mb-0"><a class="d-block pr-0">предлагаем только те услуги, в которых мы &mdash; профессионалы</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-12">
+                        <div class="search-on-page">
+                            <form class="search-on-page--form">
+                                <input class="search-on-page--input text-uppercase " placeholder="Найти товар или артикул" type="text" value="" name="searchOnPage">
+                                <span class="search-on-page--search-icon d-flex"><i class="fa fa-search" aria-hidden="true"></i></span>
+                                <input class="search-on-page--search" type="submit" value="">
+                            </form>
+                        </div>
+                    </div>
+                    <section class="col-12 mt-2 mb-5 katalog-items">
+                        <div class="row">
+                            <div class="col-6 col-sm-3 pr-sm-0">
+                                <a href="nat-linol.htm" class="ml-0 katalog-item katalog-item--natural_linol">
+                                    <div class="katalog-item-back katalog-item--natural_linol-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Натуральный линолеум</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 p-sm-0">
+                                <a href="k_linol.htm" class="katalog-item katalog-item--linol_pvc">
+                                    <div class="katalog-item-back katalog-item--linol_pvc-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Линолеум пвх</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 mt-sm-0 p-sm-0">
+                                <a href="k_kovrolin.htm" class="katalog-item katalog-item--carpet">
+                                    <div class="katalog-item-back katalog-item--carpet-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Ковролин</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 mt-sm-0 pl-sm-0">
+                                <a href="#" class="mr-0 katalog-item katalog-item--wall_flooring">
+                                    <div class="katalog-item-back katalog-item--wall_flooring-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Настенные покрытия</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 pr-sm-0">
+                                <a href="info.htm" class="ml-0 katalog-item katalog-item--sport_flooring">
+                                    <div class="katalog-item-back katalog-item--sport_flooring-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Спортивные покрытия</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 p-sm-0">
+                                <a href="pvh.htm" class="katalog-item katalog-item--tile_pvc">
+                                    <div class="katalog-item-back katalog-item--tile_pvc-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Плитка ПВХ</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 p-sm-0">
+                                <a href="kov-plitka.htm" class="katalog-item katalog-item--tile_carpet">
+                                    <div class="katalog-item-back katalog-item--tile_carpet-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Ковровая плитка</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 pl-sm-0">
+                                <a href="k_keramog.htm" class="mr-0 katalog-item katalog-item--stoneware">
+                                    <div class="katalog-item-back katalog-item--stoneware-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Керамогранит</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 pr-sm-0">
+                                <a href="k_himia.htm" class="ml-0 katalog-item katalog-item--flooring_chem">
+                                    <div class="katalog-item-back katalog-item--flooring_chem-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Напольная химия</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 p-sm-0">
+                                <a href="grazzash.htm" class="katalog-item katalog-item--dirtyshield_system">
+                                    <div class="katalog-item-back katalog-item--dirtyshield_system-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Система грязезащиты</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 p-sm-0">
+                                <a href="k_lamin.htm" class="katalog-item katalog-item--plinths">
+                                    <div class="katalog-item-back katalog-item--plinths-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Напольные плинтусы</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-3 mt-4 pl-sm-0">
+                                <a href="uslugi.htm" class="mr-0 katalog-item katalog-item--construct_works">
+                                    <div class="katalog-item-back katalog-item--construct_works-back">
+
+                                    </div>
+                                    <div class="katalog-item-desc">
+                                        <h3 class="text-uppercase text-center">Строительно-монтажные работы</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="bottom-useful-links row w-100 m-0">
+                        <div class="col-12 col-sm-6 col-md-3 pr-sm-0">
+                            <a href="#" class="d-block usefull_articles">
+                                <span class="d-block usefull_articles-wrapper">
+                                    <span class="d-block w-100 usefull_articles-img"></span>
+                                    <span class="d-flex orange_circle"><img class="m-auto" src="icons/usefull_articles.svg" alt="Полезное"></span>
+                                </span>
+                                <span class="d-block w-100 usefull_articles-text">
+                                    <h3 class="mb-0 text-center text-uppercase">Полезные статьи<img src="icons/arrow_righ-orange.svg" alt="Полезные статьи"></h3>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-6 p-0">
+                            <a href="#" class="d-block sales_flooring">
+                                <span class="d-block sales_flooring-wrapper">
+                                    <span class="d-block w-100 sales_flooring-img"></span>
+                                    <span class="d-flex h-100 w-100 sales_flooring-heading">
+                                        <span class="m-auto sales_flooring-heading-text text-uppercase">Распродажа</span>
+                                    </span>
+                                </span>
+                                <span class="d-block w-100 sales_flooring-text">
+                                    <h3 class="mb-0 text-center text-uppercase">Посмотреть все актуальные предложения<img src="icons/arrow_righ-orange.svg" alt="Все предложения"></h3>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 pl-sm-0">
+                            <a href="#" class="d-block discounts_promotions">
+                                <span class="d-block discounts_promotions-wrapper">
+                                    <span class="d-block w-100 discounts_promotions-img"></span>
+                                    <span class="d-flex orange_circle"><img class="m-auto" src="icons/promotions.png" alt="Скидки"></span>
+                                </span>
+                                <span class="d-block w-100 discounts_promotions-text">
+                                    <h3 class="mb-0 text-center text-uppercase">Скидки и акции<img src="icons/arrow_righ-orange.svg" alt="Скидки и акции"></h3>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <section class="col-12 mt-1">
+                        <div class="row">
+                            <div class="col-12 col-md-6 pr-3 d-flex flex-wrap">
+                                <div class="w-100 mb-3 block_gray_orange_mark">
+                                    <h3 class="text-uppercase pl-5">Профессиональная консультация</h3>
+                                    <p class="w-100 px-5 mb-0 mt-3 text-justify">Подробно ознакомиться с отделочными материалами Вы можете в соответствующих разделах сайта, а так же получить всю необходимую информацию по телефонам. Наши специалисты всегда помогут Вам в подборе необходимых материалов, а также дадут подробную консультацию.</p>
+                                    <div class="block_gray_orange_mark-floating_block">
+                                        <img width="90%" src="icons/consult.svg" alt="Профессиональная консультация Гельстр">
+                                    </div>
+                                </div>
+                                <div class="w-100 mb-3 mt-auto block_gray_orange_mark">
+                                    <h3 class="text-uppercase pl-5">Живые образцы</h3>
+                                    <p class="w-100 px-5 mb-0 mt-3 text-justify">Вы можете посмотреть “живые” образцы всех материалов в наших офисах в Москве и Санкт-Петербурге. Позвоните Вашему персональному менеджеру и он подготовит их для Вас.</p>
+                                    <div class="block_gray_orange_mark-floating_block">
+                                        <img width="90%" src="icons/live_samples.svg" alt="Живые образцы Гельстр">
+                                    </div>
+                                </div>
+                                <div class="w-100 mt-auto minus_margin-lg-110 block_gray_orange_mark">
+                                    <h3 class="text-uppercase pl-5">Доставка</h3>
+                                    <p class="w-100 px-5 mb-0 mt-3 text-justify">Все предлагаемые напольные покрытия могут быть доставлены в любой регион России по Вашему желанию.</p>
+                                    <p class="w-100 px-5 mb-0 mt-3 text-justify">Все хлопоты по перевозке товара мы берем на себя. Доставка товара по России осуществляется транспортными компаниями-партнерами, с которыми мы работаем долгие годы.</p>
+                                    <div class="block_gray_orange_mark-floating_block">
+                                        <img width="90%" src="icons/delivery.svg" alt="Доставка Гельстр">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 pl-1">
+                                <header class="d-flex our_projects-header flex-column mt-4 mb-4 px-5">
+                                    <h3 class="text-uppercase text-center mb-4 mx-auto">Наши проекты</h3>
+                                    <p class="text-center mb-auto mx-auto">Мы осуществляем профессиональный настил напольных покрытий и предлагаем Вам ознакомиться с некоторыми нашими работами в разделе <a href="fotogal.htm" class="usual_link d-inline">Фотогалерея</a></p>
+                                </header>
+                                <div class="our_projects-photos d-flex w-100 flex-wrap">
+                                    <div class="row">
+                                        <div class="col-auto our_projects-photos pr-2">
+                                            <a class="d-block position-relative link-image" href="foto_effekta.htm">
+                                                <img src="img/general_catalogue/top-2-best_42-44.jpg" alt="Плитка ПВХ в интерьере" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">Tarkett шоу <br> (плитка ПВХ)</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto our_projects-photos pl-2">
+                                            <a class="d-block position-relative link-image" href="marmoleum_object.htm">    
+                                                <img src="img/general_catalogue/top-2-best_44.jpg" alt="Натуральный линолеум в интерьере фитнесс клуба" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">Фитнесс-клуб WorldClass <br> (мармолеум)</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto our_projects-photos pr-2 mt-3">
+                                            <a class="d-block position-relative link-image" href="marmoleum_plintus.htm">    
+                                                <img src="img/general_catalogue/top-2-best_49.jpg" alt="Мармолеум в интерьере клиники" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">Клиника &laquo;Эксимер&raquo; <br>(мармолеум с заводом на стену)</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto our_projects-photos pl-2 mt-3">
+                                            <a class="d-block position-relative link-image" href="linoleum_sport.htm">    
+                                                <img src="img/general_catalogue/top-2-best_50.jpg" alt="Спортивный линолеум в интерьере спортивного зала" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">ГБУ СШОР №1 Калининского района <br> (Спортивный линолеум)</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto our_projects-photos pr-2 mt-3">
+                                            <a class="d-block position-relative link-image" href="kovrovaya_plitka.htm">    
+                                                <img src="img/general_catalogue/top-2-best_54.jpg" alt="Ковровая плитка в интерьере офиса" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">&laquo;ЭКСПОФОРУМ&raquo; <br> (ковровая плитка)</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto our_projects-photos pl-2 mt-3">
+                                            <a class="d-block position-relative link-image" href="marmoleum_object.htm">    
+                                                <img src="img/general_catalogue/top-2-best_51-53.jpg" alt="Напольные покрытия для детей" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">Детский клуб &laquo;Талантика&raquo; <br> (мармолеум)</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto our_projects-photos pr-2 mt-3">
+                                            <a class="d-block position-relative link-image" href="foto_coral.htm">    
+                                                <img src="img/general_catalogue/top-2-best_56-58.jpg" alt="Грязезащитные системы в интерьере" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">Входная зона на объекте <br> (грязезащита)</span></p>
+                                            </a>
+                                        </div>
+                                        <div class="col-auto our_projects-photos pl-2 mt-3">
+                                            <a class="d-block position-relative link-image" href="foto_effekta.htm">    
+                                                <img src="img/general_catalogue/top-2-best_60.jpg" alt="Интерьерные решения из напольных покрытий" class="w-100">
+                                                <p class="our_projects-photos--description d-flex position-absolute m-0 w-100"><span class="d-block text-center m-auto">ЦДТ &laquo;Хибины&raquo; <br> (плитка ПВХ)</span></p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-12 our_partners mb-3">
+                        <h3 class="text-center text-uppercase pb-3 mt-5 mb-4">Наши партнеры</h3>
+                        <div class="our_partners-samples">
+                            <div class="row m-0 justify-content-center">
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_64.jpg" alt="сотрудничество с Gerflor" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_66.jpg" alt="сотрудничество с Forbo Flooring" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_68.jpg" alt="сотрудничество с Tarkett" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_70.jpg" alt="сотрудничество с Grabo" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_62-72.jpg" alt="сотрудничество с Balsan" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_62-74.jpg" alt="сотрудничество с Betap" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_67-77.jpg" alt="сотрудничество с Desso" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_67-79.jpg" alt="сотрудничество с Dollken" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_90.jpg" alt="сотрудничество с Алсагор" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_92.jpg" alt="сотрудничество с IVC Group" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_94.jpg" alt="сотрудничество с РезиПОЛ" class=""></div>
+                                <div class="our_partners-sample d-flex mx-1"><img src="img/general_catalogue/top-2-best_76-96.jpg" alt="сотрудничество с Eurocol" class=""></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <? include('footer.htm'); ?>
+    </footer>
+
+    <!--User's scripts-->
+    <script async src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script async src="js/fontawesome/js/all.min.js"></script>
+    <script src="js/search/js/classie.js"></script>
+    <script src="js/search/js/uisearch.js"></script>
+    <script src="js/search/js/modernizr.custom.js"></script>
+    <script async src="js/main.js"></script>
+    <script>
+        new UISearch(document.getElementById('sb-search'));
+    </script>
+</body>
+
+</html>

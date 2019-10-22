@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'PTSans';
+    font-style: italic;
+    font-weight: normal;
+    src: url("PT_Sans-Web-Italic.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptsans/v9/jizYRExUiTo99u79D0e0ysmIEDQ.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'PTSans';
+    font-style: normal;
+    font-weight: normal;
+    src: url("PT_Sans-Web-Regular.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptsans/v9/jizaRExUiTo99u79D0-ExdGM.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'PTSans';
+    font-style: normal;
+    font-weight: bold;
+    src: url("PT_Sans-Web-Bold.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptsans/v9/jizYRExUiTo99u79D0e0ysmIEDQ.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'PTSans';
+    font-style: italic;
+    font-weight: bold;
+    src: url("PT_Sans-Web-BoldItalic.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptsans/v9/jizaRExUiTo99u79D0-ExdGM.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'PTSerif';
+    font-style: italic;
+    font-weight: normal;
+    src: url("PT_Serif-Web-Italic.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptserif/v9/EJRTQgYoZZY2vCFuvAFT_rC1chb-.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'PTSerif';
+    font-style: normal;
+    font-weight: normal;
+    src: url("PT_Serif-Web-Regular.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptserif/v9/EJRVQgYoZZY2vCFuvAFbzr-tdg.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'PTSerif';
+    font-style: normal;
+    font-weight: bold;
+    src: url("PT_Serif-Web-Bold.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptserif/v9/EJRTQgYoZZY2vCFuvAFT_rC1chb-.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'PTSerif';
+    font-style: italic;
+    font-weight: bold;
+    src: url("PT_Serif-Web-BoldItalic.ttf") format("truetype"), url(https://fonts.gstatic.com/s/ptserif/v9/EJRVQgYoZZY2vCFuvAFbzr-tdg.woff2) format('woff2');
+}

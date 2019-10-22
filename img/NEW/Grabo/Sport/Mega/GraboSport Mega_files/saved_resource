@@ -1,0 +1,2136 @@
+(function(){
+  
+  var $CS = window.ConsultSystems = {
+    min: [240,350],
+    max: [1400,1400],
+    offset: {x:0,y:0},
+    savedOffset: {},
+    savedSize: [],
+    fixedSupport: true,
+    scrolltop: 0,
+    window: {},
+    opener: false,
+    iframeSrc: ""+document.location.protocol+"//consultsystems.ru/siteim/mbUpRY8E2ByO/",
+    blankIframeSrc: ""+document.location.protocol+"//consultsystems.ru/blank/",
+    fixedClass: "fixed",  
+    isFixed: true,
+    touchSupport: false,
+    imagesUrl: ""+document.location.protocol+"//consultsystems.ru/script/im/images/",
+    buttonImagesUrl: ''+document.location.protocol+'//consultsystems.ru/script/im/button/',
+    avatar: ''+document.location.protocol+'//consultsystems.ru/photos/3019/square/4593_100x100_92131.png',
+    style: {},
+    domReady: false,
+    buttonsCount: 0,
+    minOpacity: 0,
+    buttons: {},
+    openPosition: [300,200],
+    stylesheet: '',
+    titleHeight: 35,
+    callbackVisit: "consultsystemsVisit",
+    urlVisit: ""+document.location.protocol+"//consultsystems.ru/script/im/visit.php?callback=?",
+    callbackCheck: "consultsystemsCheck",
+    urlCheck: ""+document.location.protocol+"//update.consultsystems.ru/messages.php?callback=?",
+    //urlCheck: ""+document.location.protocol+"//consultsystems.ru/script/im/update.php?callback=?",
+    callbackClose: "consultsystemsClose",
+    urlClose: ""+document.location.protocol+"//consultsystems.ru/script/im/close.php?callback=?",
+    callbackParams: "consultsystemsParams",
+    urlParams: ""+document.location.protocol+"//consultsystems.ru/script/im/setparams.php?callback=?",
+    checkMaxId: '',
+    haveSession: false,
+    needReload: false,
+    tarifId: 2,
+    userStatus: "online",
+    userReq: true,
+    silent: false,
+    vCookie: '',
+    isIE8: (navigator.appVersion.indexOf("MSIE 8.") != -1),
+    isIE7: (navigator.appVersion.indexOf("MSIE 7.") != -1),
+    isIE6: false /*@cc_on || @_jscript_version < 5.7 @*/,
+    isSafari: Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0
+  };
+
+
+
+function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    // test values
+    // IE 10
+    //ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';
+    // IE 11
+    //ua = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko';
+    // IE 12 / Spartan
+    //ua = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+        // IE 12 => return version number
+        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
+}
+
+
+
+if (detectIE() === false) {
+    $CS.buttonRnd = Math.floor((Math.random() * 10000000) + 1);
+    $CS.lastTime = 0;
+    $CS.transitionTime = 0;
+
+    $CS.setMainTab = function(){
+        $CS.lastTime = Math.floor(Date.now() / 1000);
+        $CS.transitionTime = 0;
+        $CS.silent = false;
+        var cookie = $CS.buttonRnd+';'+$CS.lastTime;
+        setCookie("wcmaintab",cookie, {
+            expires: 0, path: "/"
+        });
+
+        var iframe =  document.getElementById('consultsystems_iframe');
+        if (typeof(iframe) != 'undefined' && iframe != null)
+        {
+            iframe.style.display = 'block';
+            if(iframe.src==$CS.blankIframeSrc){
+                var loader = document.getElementById('consultsystems_iframe_loading');
+                if (typeof(loader) != 'undefined' && loader != null){
+                    loader.className = 'consultsystems_iframe_loading';
+                }
+                iframe.src = $CS.iframeSrc;
+            }
+        }
+    }
+
+    $CS.setSilentTab = function(){
+        $CS.silent = true;
+        var iframe =  document.getElementById('consultsystems_iframe');
+        if (typeof(iframe) != 'undefined' && iframe != null)
+        {
+            var loader = document.getElementById('consultsystems_iframe_loading');
+            if (typeof(loader) != 'undefined' && loader != null){
+                loader.className = 'consultsystems_iframe_loading';
+            }
+
+            if(iframe.src!=$CS.blankIframeSrc){
+                iframe.style.display = 'none';
+                iframe.src = $CS.blankIframeSrc;
+            }
+        }
+    };
+
+    $CS.checkTabState = function(){
+        var cookie = getCookie("wcmaintab");
+        var current_time = Math.floor(Date.now() / 1000);
+
+        // Cookie not defined, this window is main
+        if(typeof cookie === 'undefined'){
+            return 'main';
+        }
+
+        // ButtonRnd match, this window is main
+        var parts = cookie.split(";");
+        parts[0] = parseInt(parts[0]);
+        parts[1] = parseInt(parts[1]);
+
+        if(parts[0]==$CS.buttonRnd){
+            return 'main';
+        }
+
+        if(current_time-parts[1]>9){
+            return 'main';
+        }
+
+        $CS.transitionTime += 1;
+        if($CS.transitionTime>9){
+            // ButtonRnd doesn't match, this is silent tab
+            return 'silent';
+        }
+
+        return 'transition';
+
+    }
+
+
+    function getHiddenProp(){
+        var prefixes = ['webkit','moz','ms','o'];
+
+        // if 'hidden' is natively supported just return it
+        if ('hidden' in document) return 'hidden';
+
+        // otherwise loop over all the known prefixes until we find one
+        for (var i = 0; i < prefixes.length; i++){
+            if ((prefixes[i] + 'Hidden') in document)
+                return prefixes[i] + 'Hidden';
+        }
+
+        // otherwise it's not supported
+        return null;
+    }
+
+    function isHidden() {
+        var prop = getHiddenProp();
+        if (!prop) return false;
+
+        return document[prop];
+    }
+
+    function visChange() {
+        if (isHidden()){
+
+        }else{
+            $CS.setMainTab();
+        }
+    }
+
+// use the property name to generate the prefixed event name
+    var visProp = getHiddenProp();
+    if (visProp) {
+        var evtname = visProp.replace(/[H|h]idden/,'') + 'visibilitychange';
+        document.addEventListener(evtname, visChange);
+    }
+
+
+
+    var mm_wait = false;
+    document.addEventListener("mousemove", function(){
+        if(!mm_wait){
+            $CS.setMainTab();
+            mm_wait = true;
+            setTimeout(function(){ mm_wait = false; },1000);
+        }
+    });
+
+
+    $CS.setMainTab();
+    setInterval(function(){
+        var state = $CS.checkTabState();
+        if(state=='main'){
+            $CS.setMainTab();
+        }
+        if(state=='silent'){
+            $CS.setSilentTab();
+        }
+    },1000);
+}
+
+
+
+
+
+  $CS.style = {
+    windowTitle: "Покрытия Grabo",
+textColor: "#ffffff",
+textShadow: "1px 1px 1px rgba(0,0,0,.4)",
+fontSize: "14px",
+borderRadius: 15,
+bgColorType: "gradient",
+bgColor: "#8d9c9c",
+bgGradient: ["#c2c8c8", "#8d9c9c"],
+borderColor: ["#8b9b9b"],
+borderWidth: 1,
+inBorderColor: ["#d1d6d6", "#b9c2c2", "#a5b2b2", "#b9c2c2"],
+inBorderWidth: 1
+  }
+
+  $CS.windowShow = function () {
+    document.getElementById('bubble_but').click();
+  }
+  
+  $CS.widget = function () {
+    
+    var cook = getCookie("consultsystemswindow");
+    if (cook) {
+
+      var csw = $CS.csw = cook.split("|");
+
+      if (csw[0] && csw[0]=="open" && $CS.haveSession) {
+        $CS.preopen = true;
+      }
+
+      if (csw[1] && csw[2]) {
+        $CS.savedOffset = {
+          x: Number(csw[1]),
+          y: Number(csw[2])
+        } 
+      }
+
+      if (csw[2] && csw[3]) {
+        $CS.savedSize = [Number(csw[3]), Number(csw[4])];
+      }
+
+    }
+
+
+    
+
+
+
+    if ($CS.style.repaint) {
+      $("#consultsystems_title span").text($CS.style.windowTitle)
+    }
+
+    var brdrad = $CS.style.borderRadius+'px '+$CS.style.borderRadius+'px 0 0';
+
+    $CS.defaultStyle = '.consultsystems{-khtml-opacity:0;-moz-opacity:0;opacity:0;position:absolute;margin:0;padding:0;z-index:1000000;}#consultsystems_widget,#consultsystems_widget *{z-index:1000000;border:none;background:none;margin:0;padding:0;}.consultsystems_pre{transition:top .3s ease, left .3s ease, opacity .3s ease, width .3s ease, height .3s ease;-moz-transition:top .3s ease, left .3s ease, opacity .3s ease, width .3s ease, height .3s ease;-webkit-transition:top .3s ease, left .3s ease, opacity .3s ease, width .3s ease, height .3s ease;border:none;margin:0;padding:0;}.consultsystems_hidden{-khtml-opacity:'+$CS.minOpacity+';-moz-opacity:'+$CS.minOpacity+';opacity:'+$CS.minOpacity+';height:0;width:0;border:none;margin:0;padding:0;}.consultsystems_visible{-khtml-opacity:1;-moz-opacity:1;opacity:1;border:none;margin:0;padding:0;}#consultsystems_widget .consultsystems a{border:none;text-decoration:none;margin:0;padding:0;}#consultsystems_widget .consultsystems_widget{position:absolute;width:100%;height:100%;left:0;right:0;top:0;bottom:0;}#consultsystems_widget .consultsystems_title{cursor:default;left:0;top:0;right:0;position:static;width:auto;text-align:left;}#consultsystems_widget .consultsystems_title span{text-align:left;cursor:default;font-size:14px!important;font-family:Arial!important;font: bold 14px/'+$CS.titleHeight+'px Arial !important;font-weight:bold!important;display:block!important;line-height:'+$CS.titleHeight+'px;color:#fff!important;text-shadow:1px 1px 1px rgba(0,0,0,.5)!important;-moz-text-shadow:1px 1px 1px rgba(0,0,0,.5)!important;-webkit-text-shadow:1px 1px 1px rgba(0,0,0,.5)!important;margin:0; display:block; height: '+$CS.titleHeight+'px; padding-left:15px}#consultsystems_widget .consultsystems_title strong{text-align:left;display:block;overflow:hidden;}#consultsystems_widget .consultsystems_title b{display:none;/*right:0;width:6px;height:'+$CS.titleHeight+'px;overflow:hidden;position:absolute;float:right;*/}#consultsystems_widget .consultsystems_iframe_div{border-left:solid 1px #DFDFDF;border-right:solid 1px #DFDFDF;background:#fff;min-height:100px;position:absolute;left:0;right:0;top:'+$CS.titleHeight+'px;bottom:10px;}#consultsystems_widget .consultsystems_bottom{height:12px;display:block;overflow:hidden;width:100%;right:0;left:0;position:absolute;bottom:0;}#consultsystems_widget .consultsystems_bottom strong{display:block;height:12px;overflow:hidden;background:url('+$CS.imagesUrl+'bottom.png) repeat-x 0 0;left:0;right:12px;margin-right:12px;position:relative;}#consultsystems_widget .consultsystems_bottom b{display:block;height:12px;width:12px;overflow:hidden;background:url('+$CS.imagesUrl+'bottom-r.png) repeat-x 0 0;right:0;float:right;position:absolute;}.consultsystems_fixed .consultsystems_shadows{display:block!important;}.consultsystems_shadow_lefttop{position:absolute;overflow:hidden;left:-3px;top:0;width:3px;height:20px;background:url('+$CS.imagesUrl+'shadow-corners.png) no-repeat 0 0;}#consultsystems_widget .consultsystems_shadow_righttop{position:absolute;overflow:hidden;right:-7px;top:10px;width:7px;height:10px;background:url('+$CS.imagesUrl+'shadow-corners.png) no-repeat -27px 0;}#consultsystems_widget .consultsystems_shadow_right{position:absolute;overflow:hidden;right:-7px;width:7px;top:20px;bottom:11px;background:url('+$CS.imagesUrl+'shadow-both.png) repeat-y -3px 0;}#consultsystems_widget .consultsystems_shadow_rightbottom{position:absolute;overflow:hidden;right:-7px;bottom:-7px;width:18px;height:18px;background:url('+$CS.imagesUrl+'shadow-corners.png) no-repeat -16px -20px;}#consultsystems_widget .consultsystems_shadow_bottom{position:absolute;overflow:hidden;left:13px;right:11px;bottom:-7px;height:7px;background:url('+$CS.imagesUrl+'shadow-bottom.png) repeat-x 0 0;}#consultsystems_widget .consultsystems_shadow_leftbottom{position:absolute;overflow:hidden;left:-3px;bottom:-7px;width:16px;height:18px;background:url('+$CS.imagesUrl+'shadow-corners.png) no-repeat 0 -20px;}#consultsystems_widget .consultsystems_shadow_left{position:absolute;overflow:hidden;left:-3px;width:3px;top:20px;bottom:11px;background:url('+$CS.imagesUrl+'shadow-both.png) repeat-y 0 0;}#consultsystems_widget .consultsystems_resizer{position:absolute;overflow:hidden;right:0;bottom:0;width:18px;height:18px;cursor:se-resize;}';
+$CS.defaultStyle += '#consultsystems_widget .consultsystems_close{cursor:pointer;position:absolute;width:13px;height:'+$CS.titleHeight+'px;right:0;top:0;}#consultsystems_widget .consultsystems_close i{position:absolute;background:url('+$CS.imagesUrl+'close.png) no-repeat 0 0;overflow:hidden;width:13px;height:13px;right:27px;top:12px;}#consultsystems_widget .consultsystems_close:hover i{background-position:-16px 0;}#consultsystems_widget .consultsystems_close:active i{background-position:-32px 0;}';
+
+$CS.defaultStyle += '#consultsystems_widget .consultsystems_end{cursor:pointer;position:absolute;width:13px;height:'+$CS.titleHeight+'px;right:0;top:0;}#consultsystems_widget .consultsystems_end i{position:absolute;background:url('+$CS.imagesUrl+'end.png) no-repeat 0 0;overflow:hidden;width:13px;height:13px;right:10px;top:12px;}#consultsystems_widget .consultsystems_end:hover i{background-position:-16px 0;}#consultsystems_widget .consultsystems_end:active i{background-position:-32px 0;}';
+
+$CS.defaultStyle += '#consultsystems_widget .consultsystems_iframe_over,.consultsystems_iframe_loading{position:absolute;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background:#fff;}#consultsystems_widget .consultsystems_iframe_over{display:none;filter:alpha(opacity=10);-khtml-opacity:0.1;-moz-opacity:0.1;opacity:0.1;}#consultsystems_widget .consultsystems_iframe_loading{background:url('+$CS.imagesUrl+'preloader.gif) no-repeat center center;}#consultsystems_widget .consultsystems_iframe_over_show{display:block;}.consultsystems_fixed{position:fixed;}#consultsystems_widget .consultsystems_shadows,.consultsystems_closed,#consultsystems_widget .consultsystems_iframe_loaded{display:none;}';
+    $CS.defaultStyle += '#consultsystems_widget .consultsystems_title, #consultsystems_widget .consultsystems_title strong, #consultsystems_widget .consultsystems_title span {border-radius: '+brdrad+'; -moz-border-radius: '+brdrad+'; -webkit-border-radius: '+brdrad+'}';
+    $CS.defaultStyle +='.consultsystems_button_wrap{position:absolute;cursor:default;display:block;-khtml-opacity:1;z-index:100000;-moz-opacity:1;opacity:1;transition:opacity .5s ease;-moz-transition:opacity .5s ease;-webkit-transition:opacity .5s ease;}.consultsystems_button_wrap,.consultsystems_button_wrap *{border:none;user-select:none;-moz-user-select:none;-webkit-user-select:none;margin:0;padding:0;}.consultsystems_button_wrap .consultsystems_button{z-index:1000000;display:block;text-decoration:none;position:relative;}.consultsystems_button_hide{display:none;}.consultsystems_button_outscreen{left:-1000px!important;top:-10000px!important;right:auto!important;bottom:auto!important;}.consultsystems_button_left-top{top:0;left:0;}.consultsystems_button_center-top{top:0;left:50%;}.consultsystems_button_right-top{top:0;right:0;}.consultsystems_button_right-center{top:50%;right:0;}.consultsystems_button_left-bottom{bottom:0;left:0;}.consultsystems_button_center-bottom{bottom:0;left:50%;}.consultsystems_button_right-bottom{bottom:0;right:0;}.consultsystems_button_left-center{top:50%;left:0;}.consultsystems_button_wrap .consultsystems_button_pos{display:block;position:relative;}.consultsystems_button_wrap .consultsystems_button_border{display:block;border:solid 1px #619829;text-decoration:none;vertical-align:bottom;overflow:hidden;outline:none;margin:0;}.consultsystems_button_wrap .consultsystems_button_in{cursor:pointer;display:block;text-decoration:none;position:relative;overflow:hidden;}.consultsystems_button_text{display:inline-block;font:bold 14px/32px Arial!important;font-family:Arial!important;font-weight:bold;border:none;white-space:nowrap;margin:0;}.consultsystems_button_left-top .consultsystems_button_text,.consultsystems_button_center-top .consultsystems_button_text,.consultsystems_button_right-top .consultsystems_button_text,.consultsystems_button_left-bottom .consultsystems_button_text,.consultsystems_button_center-bottom .consultsystems_button_text,.consultsystems_button_right-bottom .consultsystems_button_text{padding:0 10px 0 35px;}.consultsystems_button_right-center .consultsystems_button_text,.consultsystems_button_left-center .consultsystems_button_text{width:33px;text-align:center;padding:35px 0 25px;}.consultsystems_button_icon{display:block;overflow:hidden;position:absolute;left:7px;top:50%;background:url('+$CS.buttonImagesUrl+'icon-1.png) no-repeat center center;width:24px;height:24px;margin-top:-12px;}.consultsystems_button_right-center .consultsystems_button_icon,.consultsystems_button_left-center .consultsystems_button_icon{left:50%;margin-left:-12px;bottom:7px;top:auto;}.consultsystems_button_status{display:none;background:url('+$CS.buttonImagesUrl+'online.png) no-repeat 0 0;width:70px;height:21px;overflow:hidden;position:absolute;right:7px;top:50%;border:none;margin:-10px 0 0;padding:0;}.consultsystems_button_right-center .consultsystems_button_status,.consultsystems_button_left-center .consultsystems_button_status{background:url('+$CS.buttonImagesUrl+'online.png) no-repeat 0 -30px;width:21px;height:70px;left:50%;top:7px;bottom:auto;margin:0 0 0 -10px;}.consultsystems_button_wrap .consultsystems_bubble_trans {transition:opacity .5s ease;-moz-transition:opacity .5s ease;-webkit-transition:opacity .5s ease;} .consultsystems_button_wrap .consultsystems_bubble{text-align:left;border:solid 1px #D3CEC9;background:#F9F5F1;width:240px;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;position:absolute;display:block;box-shadow:1px 2px 3px rgba(0,0,0,0.1);-moz-shadow:1px 2px 3px rgba(0,0,0,0.1);-webkit-shadow:1px 2px 3px rgba(0,0,0,0.1);-khtml-opacity:1;-moz-opacity:1;opacity:1;}.consultsystems_button_wrap .consultsystems_bubble_in{text-align:left;font:normal 12px/15px Arial, Tahoma!important;color:#333333;display:block;position:relative;}.consultsystems_button_wrap .consultsystems_bubble_info{display:block;padding:10px;}.consultsystems_button_wrap .consultsystems_bubble_arrow{position:absolute;}.consultsystems_button_left-top .consultsystems_bubble_arrow,.consultsystems_button_center-top .consultsystems_bubble_arrow{display:inline-block;width:15px;height:23px;top:-23px;left:20px;background:url('+$CS.buttonImagesUrl+'bubble-top-1.png) no-repeat 0 0;}.consultsystems_button_right-top .consultsystems_bubble_arrow{display:block;width:15px;height:23px;top:-23px;right:20px;background:url('+$CS.buttonImagesUrl+'bubble-top-2.png) no-repeat 0 0;}.consultsystems_button_right-center .consultsystems_bubble_arrow{display:block;width:21px;height:16px;top:10px;right:-21px;background:url('+$CS.buttonImagesUrl+'bubble-right.png) no-repeat 0 0;}.consultsystems_button_left-center .consultsystems_bubble_arrow{display:inline-block;width:21px;height:16px;top:10px;left:-21px;background:url('+$CS.buttonImagesUrl+'bubble-left.png) no-repeat 0 0;}.consultsystems_button_left-bottom .consultsystems_bubble_arrow,.consultsystems_button_center-bottom .consultsystems_bubble_arrow{display:inline-block;width:18px;height:19px;bottom:-19px;left:20px;background:url('+$CS.buttonImagesUrl+'bubble-bottom-1.png) no-repeat 0 0;}.consultsystems_button_right-bottom .consultsystems_bubble_arrow{display:inline-block;width:18px;height:19px;bottom:-19px;right:20px;background:url('+$CS.buttonImagesUrl+'bubble-bottom-2.png) no-repeat 0 0;}.consultsystems_button_right-top .consultsystems_bubble{top:100%;right:0;margin:10px 0 0;}.consultsystems_button_right-center .consultsystems_bubble{top:10px;left:-250px;}.consultsystems_button_left-center .consultsystems_bubble{top:10px;left:100%;margin:0 0 0 10px;}.consultsystems_button_right-bottom .consultsystems_bubble{top:-100%;right:10px;margin:-10px 0 0;}.consultsystems_button_wrap .consultsystems_bubble_info_img{float:left;display:block;padding:0 10px 0 0;position:absolute;left:10px;top:10px}.consultsystems_button_wrap .consultsystems_bubble_info_text{text-align:left;display:block;margin-left:55px;text-decoration:none;}.consultsystems_button_wrap .consultsystems_bubble_button{cursor:pointer;display:inline-block;margin-top:6px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;font-size:11px;text-decoration:none;padding:3px 8px;margin-left:55px}.consultsystems_button_wrap .consultsystems_bubble_close{background:url('+$CS.buttonImagesUrl+'close.png) no-repeat 0 0;position:absolute;display:inline-block;right:10px;top:10px;width:10px;height:10px;overflow:hidden;cursor:pointer;}.consultsystems_button_wrap .consultsystems_bubble_close:hover{background-position:0 -20px;}.consultsystems_button_hidden,.consultsystems_button_wrap .consultsystems_bubble_hidden{filter:alpha(opacity=0);-khtml-opacity:0;-moz-opacity:0;opacity:0;}.consultsystems_online .consultsystems_button_status,.consultsystems_offline .consultsystems_button_status{display:block;}.consultsystems_button_wrap .consultsystems_bubble_closed,.consultsystems_button_closed{display:none;}.consultsystems_button_left-top .consultsystems_bubble,.consultsystems_button_center-top .consultsystems_bubble{top:100%;left:0;margin:10px 0 0 5px;}.consultsystems_button_left-bottom .consultsystems_bubble,.consultsystems_button_center-bottom .consultsystems_bubble{top:-100%;left:0;margin:-10px 0 0 5px;}.consultsystems_button_preopen {top:-10000px; left:-10000px}';
+    
+    if ($CS.style) {
+      var addstyle = '';
+      if ($CS.style.textColor) { addstyle+='#consultsystems_widget .consultsystems_title span {color:'+$CS.style.textColor+' !important}'; }
+      if ($CS.style.textShadow) { addstyle+='#consultsystems_widget .consultsystems_title span { text-shadow: '+$CS.style.textShadow+' !important ; -moz-text-shadow: 1px 1px 1px '+$CS.style.textShadow+' !important ; -webkit-text-shadow: 1px 1px 1px '+$CS.style.textShadow+' !important ; }'; }
+      
+      addstyle+='#consultsystems_widget .consultsystems_title span {background: '+$CS.style.bgColor+';}';
+      if ($CS.style.bgColorType=="gradient") {
+        addstyle+='#consultsystems_widget .consultsystems_title span {background: '+$CS.style.bgColor+'; '+gradientGenerator($CS.style.bgGradient[0],$CS.style.bgGradient[1], 'y')+'}';
+      }
+
+      var winOuter = borderGenerator($CS.style.borderColor, $CS.style.borderWidth);
+      var winInner = borderGenerator($CS.style.inBorderColor, $CS.style.inBorderWidth);
+      
+      var brdrlength = winOuter.obj.top.width+winOuter.obj.bottom.width+winInner.obj.top.width+winInner.obj.bottom.width;
+
+
+      $CS.newTitleHeight = $CS.titleHeight-brdrlength;
+      addstyle+='#consultsystems_widget .consultsystems_title span {font-size: '+$CS.style.fontSize+' !important; color: '+$CS.style.textColor+' !important; line-height:'+($CS.newTitleHeight-1)+'px !important; height: '+$CS.newTitleHeight+'px !important;}';
+      addstyle+='#consultsystems_widget .consultsystems_title {'+winOuter.raw+'}';
+      addstyle+='#consultsystems_widget .consultsystems_title strong {'+winInner.raw+'}';
+      $CS.defaultStyle+=addstyle;
+    }
+
+    if ('ontouchstart' in document.documentElement) { $CS.touchSupport = true }
+
+  }
+
+  if (!window.CSEditorMode) {
+    $CS.widget();
+  } 
+
+  
+  $CS.stateReplacementsSource = ["color","textShadow","fontSize","bgColor","bgGradient","bgColorType","bgGradientType","borderColor","borderWidth","inBorderWidth","inBorderColor"];
+  $CS.stateReplacements       = ["Color","TextShadow","FontSize","BgColor","BgGradient","BgColorType","BgGradientType","BorderColor","BorderWidth","InBorderWidth","InBorderColor"];
+    
+
+
+  $CS.button = function (_options) {
+
+
+    var defaults = {
+  
+      bubbleBorder: '#D3CEC9', 
+      bubbleText: 'Здравствуйте! Могу ли Вам помочь?', 
+      bubbleImage: $CS.avatar,
+      bubbleImageType: 'new',
+      bubbleButtonText: 'начать диалог',
+      bubbleButtonTextColor: '#593D00', 
+      bubbleButtonBorder: '#E8E6E3',
+      bubbleButtonBg: 'white',
+      bubbleButtonHoverTextColor: '#593D00', 
+      bubbleButtonHoverBorder: '#cccccc',
+      bubbleButtonHoverBg: '#eee',
+      bubbleButtonActiveTextColor: '#593D00', 
+      bubbleButtonActiveBorder: '#E8E6E3',
+      bubbleButtonActiveBg: '#ccc',
+      autoOpenMargin: {
+        x: 50,
+        y: 30
+      },
+      autoOpenPosition: true
+    }    
+
+
+    var options = extend (defaults, _options);
+
+    
+    $CS.toggleHide = options.toggleHide;
+
+
+    $CS.stateReplacementsSource = ["color","textShadow","fontSize","bgColor","bgGradient","bgColorType","bgGradientType","borderColor","borderWidth","inBorderWidth","inBorderColor"];
+    $CS.stateReplacements       = ["Color","TextShadow","FontSize","BgColor","BgGradient","BgColorType","BgGradientType","BorderColor","BorderWidth","InBorderWidth","InBorderColor"];
+    
+    for (var i in $CS.stateReplacements) {
+      if (!options["hover"+$CS.stateReplacements[i]] && typeof options["hover"+$CS.stateReplacements[i]]!='boolean') {
+        options["hover"+$CS.stateReplacements[i]] = options[$CS.stateReplacementsSource[i]];
+      } 
+      if (!options["active"+$CS.stateReplacements[i]] && typeof options["active"+$CS.stateReplacements[i]]!='boolean') {
+        options["active"+$CS.stateReplacements[i]] = options["hover"+$CS.stateReplacements[i]];
+      }
+    }
+
+
+
+    var brd = options.borderRadius;
+
+    var positions = {
+
+      "left-top": {
+        br:[0,0,brd,brd],
+        arrowImg: $CS.buttonImagesUrl+'bubble-top-1.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-top-1-white.png',
+        op: function (s,o,ww) {
+          return {
+            x: o.offsetLeft+options.autoOpenMargin.x,
+            y: o.offsetHeight+o.offsetTop+options.autoOpenMargin.y
+          }
+        }
+      },
+
+      "center-top": {
+        br:[0,0,brd,brd],
+        arrowImg: $CS.buttonImagesUrl+'bubble-top-1.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-top-1-white.png',
+        op: function (s,o,ww) {
+          return {
+            x: o.offsetLeft+o.offsetWidth/2-s[0]/2,
+            y: o.offsetHeight+o.offsetTop+options.autoOpenMargin.y
+          }
+        }
+      },
+
+      "right-top": {
+        br:[0,0,brd,brd],
+        arrowImg: $CS.buttonImagesUrl+'bubble-top-2.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-top-2-white.png',
+        op: function (s,o,ww) {
+          return {
+            x: ww.innerWidth-options.autoOpenMargin.x-s[0],
+            y: o.offsetHeight+o.offsetTop+options.autoOpenMargin.y
+          }
+        }
+      },
+
+      "right-center": {
+        br:[brd,0,0,brd], 
+        vertical: true,
+        arrowImg: $CS.buttonImagesUrl+'bubble-right.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-right-white.png',
+        op: function (s,o,ww) {
+          return {
+            x: ww.innerWidth-o.offsetWidth-options.autoOpenMargin.x-s[0],
+            y: o.offsetTop+o.offsetHeight/2-s[1]/2
+          }
+        }
+      },
+
+      "left-center": {
+        br:[0,brd,brd,0], 
+        vertical: true,
+        arrowImg: $CS.buttonImagesUrl+'bubble-left.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-left-white.png',
+        op: function (s,o,ww) {
+          return {
+            x: o.offsetWidth+options.autoOpenMargin.x,
+            y: o.offsetTop+o.offsetHeight/2-s[1]/2
+          }
+        }
+      },
+
+      "right-bottom": {
+        br:[brd,brd,0,0], 
+        bottom: true,
+        arrowImg: $CS.buttonImagesUrl+'bubble-bottom-1.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-bottom-1-white.png',
+        op: function (s,o,ww) {
+          return {
+            x: ww.innerWidth-options.autoOpenMargin.x-s[0],
+            y: ww.innerHeight-options.autoOpenMargin.y-s[1]-o.offsetHeight
+          }
+        }
+      },
+
+      "center-bottom": {
+        br:[brd,brd,0,0], 
+        bottom: true,
+        arrowImg: $CS.buttonImagesUrl+'bubble-bottom-1.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-bottom-1-white.png',
+        op: function (s,o,ww) {
+          return {
+            x: o.offsetLeft+o.offsetWidth/2-s[0]/2,
+            y: ww.innerHeight-options.autoOpenMargin.y-s[1]-o.offsetHeight
+          }
+        }
+
+      },
+
+      "left-bottom": {
+        br:[brd,brd,0,0], 
+        bottom: true,
+        arrowImg: $CS.buttonImagesUrl+'bubble-bottom-1.png',
+        arrowWhiteImg: $CS.buttonImagesUrl+'bubble-bottom-1-white.png',
+
+        op: function (s,o,ww) {
+          return {
+            x: o.offsetLeft+options.autoOpenMargin.x,
+            y: ww.innerHeight-options.autoOpenMargin.y-s[1]-o.offsetHeight
+          }
+        }
+      }
+
+    }
+
+
+    if (positions[options.position]) {
+
+      var poptions = positions[options.position];
+      var title = options.title;
+      options.pos = poptions;
+
+      if (poptions.vertical) {
+        title = options.titleFlatten;
+      }
+
+
+      var statusClass = options.status=="online" ? 'consultsystems_online' : 'consultsystems_offline';
+
+      var cbh = 'consultsystems_bubble_hidden';
+      if (window.CSEditorMode && typeof options.showBubble=="number" && options.bubbleAutoHide!==0) {
+        cbh = ''
+      }
+
+      var bubbleHtml = '<span class="consultsystems_bubble '+cbh+'">'+
+        '<span class="consultsystems_bubble_in">'+
+          '<span class="consultsystems_bubble_close"></span>'+
+          '<span class="consultsystems_bubble_arrow"></span>'+
+          '<span class="consultsystems_bubble_info">'+
+            '<span class="consultsystems_bubble_info_img"><img src="'+options.bubbleImage+'" '+(options.bubbleImageType=='new' ? 'width="45" height="45"' : "")+' /></span>'+
+            '<span class="consultsystems_bubble_info_text">'+options.bubbleText+'<br/></span>'+
+          '</span>'+
+        '</span>'+
+      '</span>';
+      
+
+      var html = '<span class="consultsystems_button" id="consultsystems_but">'+
+        '<span class="consultsystems_button_pos">'+
+          '<a class="consultsystems_button_border '+statusClass+'">'+
+            '<span class="consultsystems_button_in">'+
+              '<i class="consultsystems_button_icon"></i>'+
+              '<span class="consultsystems_button_text">'+title+'</span>'+
+              '<span class="consultsystems_button_status"></span>'+
+            '</span>'+
+          '</a>'+
+          bubbleHtml+
+        '</span>'+
+      '</span>';
+
+
+      var main = document.createElement('span');
+      main.id="consultsystems_button_"+$CS.buttonsCount;
+
+
+      addClass(main, "consultsystems_button_wrap consultsystems_button_"+options.position);
+      
+      main.innerHTML = html;
+
+      addEvent (window, "scroll", function(e){
+        if (!$CS.fixedSupport){
+          $CS.scrollTopButtons = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          main.style.marginTop = $CS.scrollTopButtons+"px";
+        }
+      });
+      
+      var bubbleButton = document.createElement('a');
+      bubbleButton.id = 'bubble_but';
+      addClass(bubbleButton, "consultsystems_bubble_button");
+      bubbleButton.innerHTML = '<span>'+options.bubbleButtonText+'</span>';
+
+
+      if (window.CSEditorMode) {
+        var itm = 0;
+        $el("export-preview").appendChild(main);
+      } else {
+        var itm = 200;
+        document.body.appendChild(main);
+      }
+
+
+
+      var $button = $CS.buttons[$CS.buttonsCount] = {
+        wrap: main,
+        spanpos: main.childNodes[0],
+        options: options
+      }
+
+      $button.pos = $button.spanpos.childNodes[0];
+      $button.button = $button.pos.childNodes[0];
+      $button.bubble = $button.pos.childNodes[1];
+      $button.bubbleClose = $button.bubble.childNodes[0].childNodes[0];
+      $button.bubbleButton = $button.bubble.childNodes[0].childNodes[2].appendChild(bubbleButton);
+
+      if ($CS.fixedSupport && !window.CSEditorMode) {
+        $button.wrap.style.position = "fixed";
+        $button.wrap.style.webkitTransform = "translateZ(0)";
+        
+        
+      }
+
+      if (!window.CSEditorMode) {
+        addClass($button.pos,"consultsystems_button_outscreen");
+        addClass($button.bubble,"consultsystems_bubble_trans");
+      }
+
+
+
+      setTimeout(function(){
+        $button.size = sizes ($button.button);
+        autoOffset ($button);
+
+
+        removeClass($button.pos, "consultsystems_button_outscreen");
+        if (!window.CSEditorMode) {
+          var bubbleclose = getCookie("bubbleclose");
+          closeBubble ();
+          if (!bubbleclose && (options.showBubble || typeof options.showBubble == "number") && options.status=="online") {
+            setTimeout(openBubble, options.showBubble+1);
+            setTimeout(showBubble, options.showBubble+25);
+            if (options.bubbleAutoHide) {
+              setTimeout(hideBubble, options.showBubble+options.bubbleAutoHide+5)
+            }
+          }
+        } else {
+          //closeBubble();
+          if ((options.showBubble || typeof options.showBubble == "number") && options.bubbleAutoHide!==0) {
+            openBubble();
+            showBubble();
+          }
+        }
+      },itm);
+
+      
+
+      var x = $CS.openPosition[0],
+          y = $CS.openPosition[1];
+
+      browserWindow();
+
+
+      addEvent($button.button, "mousedown", function(e){
+        addClass($button.button,"consultsystems_button_border_active")
+      });
+
+      addEvent(document, "mouseup", function(e) {
+        removeClass($button.button,"consultsystems_button_border_active")
+      });
+
+
+
+      if (!window.CSEditorMode) {
+        addEvent($button.button, "click", function(e){
+          if (options.autoOpenPosition){
+            var s = [ $CS.savedSize[0] || $CS.min[0], $CS.savedSize[1] || $CS.min[1] ];
+            var op = poptions.op(s, $button.wrap, $CS.window);
+            x = op.x, y = op.y;
+          }
+          
+          $CS.lastOpener = $button.wrap;
+      
+          if(!$CS.isSafari){
+            $CS.show (x, y, $button.wrap);
+          }else{
+            newWin = window.open("http://consultsystems.ru/labs/safarifix.php","safarifix","width=5,height=5,resizable=no,scrollbars=no,status=no" );
+            setTimeout(function() {
+                $CS.show (x, y, $button.wrap);
+            }, 1000)
+
+          }
+          
+          
+          hideBubble();
+          
+          
+        });
+
+        
+        addEvent($button.bubbleButton, "click", function(e){
+          if (options.autoOpenPosition){
+            var s = [ $CS.savedSize[0] || $CS.min[0], $CS.savedSize[1] || $CS.min[1] ];
+            var op = poptions.op(s, $button.wrap, $CS.window);
+            x = op.x, y = op.y;
+          }
+          
+          $CS.lastOpener = $button.wrap;
+          
+          if(!$CS.isSafari){
+            $CS.show (x, y, $button.wrap);
+          }else{
+            newWin = window.open("http://consultsystems.ru/labs/safarifix.php","safarifix","width=5,height=5,resizable=no,scrollbars=no,status=no" );
+            setTimeout(function() {
+                $CS.show (x, y, $button.wrap);
+            }, 1000)
+
+          }
+          
+          
+          hideBubble();
+        });
+
+        addEvent($button.bubbleClose, "click", function(e){
+
+          var d = new Date();
+          var n = new Date(d.getTime()+1000*3600);
+
+          setCookie("bubbleclose","1", {
+            expires: n, path: "/"
+          })
+
+          hideBubble()
+        });
+        
+      }
+
+
+
+      var hideBubble = function () { 
+        addClass ($button.bubble, "consultsystems_bubble_hidden"); 
+        setTimeout(closeBubble,500);
+      }
+
+      var showBubble = function () { 
+        removeClass ($button.bubble, "consultsystems_bubble_hidden") 
+      }
+      var closeBubble = function () { addClass ($button.bubble, "consultsystems_bubble_closed") }
+      var openBubble = function () { 
+        removeClass ($button.bubble, "consultsystems_bubble_closed");
+
+      }
+
+
+
+      /* styles */
+
+      var addstyle = '';
+      addstyle+='#'+main.id+' .consultsystems_button_in  {background: '+options.bgColor+'}';
+
+      if (window.CSEditorMode) {
+        addstyle+='.consultsystems_button_right-bottom .consultsystems_bubble {top:auto;bottom:45px}';
+      }
+
+      if (options.bgColorType=='gradient' && !$CS.isIE6) {
+        if (poptions.vertical) {  var bgGradGen = gradientGenerator(options.bgGradient[0],options.bgGradient[1], 'x') } 
+        else { var bgGradGen = gradientGenerator(options.bgGradient[0],options.bgGradient[1], 'y') }
+        addstyle+='#'+main.id+' .consultsystems_button_in {background: '+options.bgColor+';'+bgGradGen+'}';
+        
+      }
+
+      
+
+      var genBordersOut = borderGenerator(options.borderColor, options.borderWidth);
+      var genBordersIn = borderGenerator(options.inBorderColor, options.inBorderWidth);
+
+      addstyle+='#'+main.id+' .consultsystems_button_border {'+genBordersOut.raw+'}';
+      addstyle+='#'+main.id+' .consultsystems_button_in {'+genBordersIn.raw+'}';
+    
+
+      var winOuter = borderGenerator(options.borderColor, options.borderWidth);
+      var winInner = borderGenerator(options.inBorderColor, options.inBorderWidth);
+      
+
+      var brdrlength = winOuter.obj.top.width+winOuter.obj.bottom.width+winInner.obj.top.width+winInner.obj.bottom.width;
+      $CS.newTitleHeight = $CS.titleHeight-brdrlength;
+
+
+      addstyle+='#'+main.id+' .consultsystems_button_text {height: '+($CS.newTitleHeight)+'px !important; line-height: '+($CS.newTitleHeight-2)+'px !important;}'
+
+      if (poptions.vertical) {
+         addstyle+='#'+main.id+' .consultsystems_button_text {height: auto !important; width: '+$CS.newTitleHeight+'px}';
+      }
+      
+
+      /* on Hover */
+      addstyle+='#'+main.id+' .consultsystems_button_border:hover .consultsystems_button_text {color: '+options.hoverColor+'; text-shadow: '+options.hoverTextShadow+'; -moz-text-shadow: '+options.hoverTextShadow+'; -text-shadow: '+options.hoverTextShadow+' }';
+      addstyle+='#'+main.id+' .consultsystems_button_border:hover .consultsystems_button_in {background: none; background: '+options.hoverBgColor+'}';
+      if (options.hoverBgColorType=="gradient" && !$CS.isIE6) {
+        if (poptions.vertical) {  var hoverBgGradGen = gradientGenerator(options.hoverBgGradient[0],options.hoverBgGradient[1], 'x') } 
+        else { var hoverBgGradGen = gradientGenerator(options.hoverBgGradient[0],options.hoverBgGradient[1], 'y') }
+        addstyle+='#'+main.id+' .consultsystems_button_border:hover .consultsystems_button_in {'+hoverBgGradGen+'}';
+      }
+      addstyle+='#'+main.id+' .consultsystems_button_border:hover {'+borderGenerator(options.hoverBorderColor, options.hoverBorderWidth).raw+'}';
+      addstyle+='#'+main.id+' .consultsystems_button_border:hover .consultsystems_button_in {'+borderGenerator(options.hoverInBorderColor, options.hoverInBorderWidth).raw+'}';
+      
+
+      /* on Active */
+      addstyle+='#'+main.id+' .consultsystems_button_border:active .consultsystems_button_text, #'+main.id+' .consultsystems_button_border_active .consultsystems_button_text, .consultsystems_button_border_active:hover .consultsystems_button_text {color: '+options.activeColor+' !important; text-shadow: '+options.activeTextShadow+'; -moz-text-shadow: '+options.activeTextShadow+'; -text-shadow: '+options.activeTextShadow+' }';
+      addstyle+='#'+main.id+' .consultsystems_button_border:active .consultsystems_button_in, #'+main.id+' .consultsystems_button_border_active .consultsystems_button_in, .consultsystems_button_border_active:hover .consultsystems_button_in {background: none; background: '+options.activeBgColor+'}';
+      
+
+      if (options.activeBgColorType=="gradient" && !$CS.isIE6) {
+        if (poptions.vertical) {  var activeBgGradGen = gradientGenerator(options.activeBgGradient[0],options.activeBgGradient[1], 'x') } 
+        else { var activeBgGradGen = gradientGenerator(options.activeBgGradient[0],options.activeBgGradient[1], 'y') }
+        addstyle+='#'+main.id+' .consultsystems_button_border:active .consultsystems_button_in, #'+main.id+' .consultsystems_button_border_active .consultsystems_button_in {background: none; '+activeBgGradGen+'}';
+      }
+      addstyle+='#'+main.id+' .consultsystems_button_border:active, #'+main.id+' .consultsystems_button_border_active {'+borderGenerator(options.activeBorderColor, options.activeBorderWidth).raw+'}';
+      addstyle+='#'+main.id+' .consultsystems_button_border:active .consultsystems_button_in, #'+main.id+' .consultsystems_button_border_active .consultsystems_button_in {'+borderGenerator(options.activeInBorderColor, options.activeInBorderWidth).raw+'}';
+
+      if (!options.icon) {
+        options.iconImage = 'none';
+        options.iconSize = [0,0];
+        if (poptions.vertical) {
+          addstyle+='#'+main.id+' .consultsystems_button_text {padding-bottom:5px}';
+        } else {
+          addstyle+='#'+main.id+' .consultsystems_button_text {padding-left:12px}';
+        }
+      } 
+
+      addstyle+='#'+main.id+' .consultsystems_button_icon {background: '+options.iconImage+'; width: '+options.iconSize[0]+'px; height: '+options.iconSize[1]+'px; }';
+
+      var brdrad = poptions.br[0]+'px '+poptions.br[1]+'px '+poptions.br[2]+'px '+poptions.br[3]+'px';
+      addstyle+='#'+main.id+' .consultsystems_button_border {border-radius: '+brdrad+';-moz-border-radius:'+brdrad+';-webkit-border-radius:'+brdrad+';}';
+      addstyle+='#'+main.id+' .consultsystems_button_in {border-radius: '+brdrad+';-moz-border-radius:'+brdrad+';-webkit-border-radius:'+brdrad+';}';
+
+     
+
+      var statusTextPadding = 'padding-right: 85px';
+      if (poptions.vertical) {
+        statusTextPadding = 'padding-top: 85px'
+      }
+
+      if (options.status=="online") { 
+        var statusBg = options.statusOnlineImgX;
+        if (poptions.vertical) { statusBg = options.statusOnlineImgY }
+      } else {
+        var statusBg = options.statusOfflineImgX;
+        if (poptions.vertical) { statusBg = options.statusOfflineImgY }
+      }
+      
+      var statusDsp = '';
+
+      if ((options.statusShow=="onlyIfOnline" && options.status!='online') || options.statusShow=='hide') {
+        statusBg = 'none';
+        statusDsp = 'display: none';
+        statusTextPadding = 'padding-right: 12px';
+        if (poptions.vertical) {
+          statusTextPadding = 'padding-top: 12px'
+        }
+      } 
+
+
+      addstyle+='#'+main.id+' .consultsystems_button_text {font-size: '+options.fontSize+' !important; color: '+options.textColor+' !important; text-shadow: '+options.textShadow+'; -moz-text-shadow: '+options.textShadow+'; -text-shadow: '+options.textShadow+'; '+statusTextPadding+' }';
+      addstyle+='#'+main.id+' .consultsystems_button_status {background:'+statusBg+'; '+statusDsp+';}';
+      addstyle+='#'+main.id+' .consultsystems_bubble {background:'+options.bubbleBg+'; border: solid 1px '+options.bubbleBorder+'}';
+      
+
+      var arrowImg = poptions.arrowImg;
+
+      if (options.bubbleBg && (options.bubbleBg=="white" || options.bubbleBg.toLowerCase=="#fff" || options.bubbleBg.toLowerCase=="#ffffff")) {
+        arrowImg = poptions.arrowWhiteImg;
+      }
+
+      addstyle+='#'+main.id+' .consultsystems_bubble_arrow {background-image:url('+arrowImg+')}';
+      addstyle+='#'+main.id+' .consultsystems_bubble_button {background: '+options.bubbleButtonBg+'; color: '+options.bubbleButtonTextColor+'; border: solid 1px '+options.bubbleButtonBorder+'}';
+      addstyle+='#'+main.id+' .consultsystems_bubble_button:hover {background: '+options.bubbleButtonHoverBg+'; color: '+options.bubbleButtonHoverTextColor+'; border: solid 1px '+options.bubbleButtonHoverBorder+'}';
+      addstyle+='#'+main.id+' .consultsystems_bubble_button:active {background: '+options.bubbleButtonActiveBg+'; color: '+options.bubbleButtonActiveTextColor+'; border: solid 1px '+options.bubbleButtonActiveBorder+'}';
+
+      $CS.defaultStyle+=addstyle;
+
+      $CS.buttonsCount++;
+      
+
+
+      function autoOffset ($btn) {
+
+        //if (!$CS.isIE7) {
+          if ($btn.options.position=="center-top") {
+            $btn.wrap.style.marginLeft = -($btn.size[0]/2)+"px"
+          }
+
+          if ($btn.options.position=="center-bottom") {
+            $btn.wrap.style.marginLeft = -($btn.size[0]/2)+"px"
+          }
+
+          if ($btn.options.position=="left-center") {
+            $btn.wrap.style.marginTop= -($btn.size[1]/2)+"px"
+          }
+
+          if ($btn.options.position=="right-center") {
+            $btn.wrap.style.marginTop= -($btn.size[1]/2)+"px"
+          }
+        //}
+
+
+
+
+        
+
+
+
+
+        if ($btn.options.marginTop) {
+          if (typeof $btn.options.marginTop == "number" && $btn.options.marginTop!==0) { $btn.options.marginTop+="px" }
+          $btn.spanpos.style.marginTop = $btn.options.marginTop;
+        }
+
+        if ($btn.options.marginRight) {
+          if (typeof $btn.options.marginRight == "number" && $btn.options.marginRight!==0) { $btn.options.marginRight+="px" }
+          $btn.spanpos.style.marginRight = $btn.options.marginRight;
+        }
+
+        if ($btn.options.marginBottom) {
+          if (typeof $btn.options.marginBottom == "number" && $btn.options.marginBottom!==0) { $btn.options.marginBottom+="px" }
+          $btn.spanpos.style.marginBottom = $btn.options.offsetBottom;
+        }
+
+        if ($btn.options.marginLeft) {
+          if (typeof $btn.options.marginLeft == "number" && $btn.options.marginLeft!==0) { $btn.options.marginLeft+="px" }
+          $btn.spanpos.style.marginLeft = $btn.options.marginLeft;
+        }
+
+
+        if (!window.CSEditorMode) {
+          if (poptions.bottom) {
+            var bubbleHeight = $btn.bubble.offsetHeight;
+            $btn.bubble.style.top = -bubbleHeight+"px"
+          }
+        }
+
+
+      }
+
+      function sizes (span) {
+        return [span.offsetWidth, span.offsetHeight];
+      }
+
+
+
+    }
+    
+    return $button;
+  }
+
+
+
+
+
+
+
+  bindReady(function(){
+
+
+    $CS.fixedSupport =  browserPositionFixed();
+
+    if (!window.CSEditorMode) {
+
+      
+    
+
+var $button = $CS.button({ position: "right-bottom",
+marginTop: 0,
+marginRight: 0,
+marginBottom: 0,
+marginLeft: 0,
+toggleHide: true,
+textColor: "#ffffff",
+textShadow: "1px 1px 1px rgba(0,0,0,.4)",
+bgColor: "#8d9c9c",
+bgGradient: ["#c2c8c8", "#8d9c9c"],
+bgColorType: "gradient",
+bgGradientType: "x",
+borderColor: ["#8b9b9b"],
+borderWidth: 1,
+inBorderColor: ["#d1d6d6", "#b9c2c2", "#a5b2b2", "#b9c2c2"],
+inBorderWidth: 1,
+hoverColor: "#ffffff",
+hoverTextShadow: "1px 1px 1px rgba(0,0,0,.1)",
+hoverBgColor: "#c2c8c8",
+hoverBgGradient: ["#dee4e4", "#a9b8b8"],
+hoverBorderColor: ["#a7b7b7"],
+hoverBgColorType: "gradient",
+hoverInBorderColor: ["#e7ebeb", "#cfd8d8", "#bac7c7", "#cfd8d8"],
+activeColor: "#ffffff",
+activeTextShadow: "1px 1px 1px rgba(0,0,0,.1)",
+activeBgColor: "#a7b7b7",
+activeBgGradient: ["#a7b7b7", "#dce3e3"],
+activeBorderColor: ["#a7b7b7"],
+activeBgColorType: "gradient",
+activeInBorderColor: ["#b9c6c6", "#ccd5d5", "#e6eaea", "#ccd5d5"],
+icon: true,
+iconImage: 'url('+document.location.protocol+'//consultsystems.ru/script/im/button/icons.png) no-repeat -67px 1px',
+iconSize: [24,24],
+paddingFromIcon: 5,
+status: "online",
+statusShow: "onlyIfOnline",
+statusSpanSize: 70,
+statusOnlineImgX: 'url('+$CS.buttonImagesUrl+'online.png) no-repeat 0px 0px',
+statusOnlineImgY: 'url('+$CS.buttonImagesUrl+'online.png) no-repeat 0px -30px',
+statusOfflineImgX: 'url('+$CS.buttonImagesUrl+'offline.png) no-repeat 0px 0px',
+statusOfflineImgY: 'url('+$CS.buttonImagesUrl+'offline.png) no-repeat 0px -30px',
+borderRadius: 15,
+title: "Задайте нам вопрос",
+titleFlatten: '<img src="'+document.location.protocol+'//consultsystems.ru/script/im/sidetexts/3046.png">',
+bubbleAutoHide: 0,
+bubbleText: "Здравствуйте!<br>Чем могу помочь?",
+bubbleBg: "white" });
+      
+
+
+      $CS.styleInit();
+
+      if ($CS.preopen) {
+        preopen($button);
+      }
+
+      var d = new Date();
+      var random = d.getTime();
+        if($CS.userStatus=='online' || typeof window.webconsult_clientinfo != 'undefined'){
+            
+            getJSONP($CS.urlVisit+"&sitehash=mbUpRY8E2ByO&title=" + encodeURIComponent(document.title.substr(0,100)) + "&tid="+$CS.tarifId+"&referer=" + encodeURIComponent(document.referrer) + "&rnd="+$CS.getUnixTime(),$CS.callbackVisit, function(data){
+                    $CS.vCookie = data.vcookie;
+            });
+        }
+        
+        
+        if($CS.userStatus=='online'){           
+            if($CS.tarifId!=2 && $CS.userReq && document.location.protocol!='https:'){
+        
+                setInterval(function(){
+                    if(!$CS.silent){
+                        getJSONP($CS.urlCheck+'&maxid='+$CS.checkMaxId+'&site_id=3046&vcookie='+$CS.vCookie+'&rnd='+$CS.getUnixTime(),$CS.callbackCheck, function(data){
+                            if(data.maxid>0) $CS.checkMaxId = data.maxid;
+                            if (data.data) {
+                                if (!$CS.opened) {
+                                    $CS.lastOpener = $button.wrap;
+                                    var s = [ $CS.savedSize[0] || $CS.min[0], $CS.savedSize[1] || $CS.min[1] ];
+                                    var op = $button.options.pos.op(s, $button.wrap, $CS.window);
+                                    x = op.x, y = op.y;
+
+                                    $CS.show (x, y, $button.wrap);
+                                }
+                            }
+                        });
+                    }
+                },5000);
+            
+            }
+          
+        }      
+
+    }
+
+
+    $CS.domReady = true;
+
+  })
+
+
+  function preopen ($button) {
+    $CS.lastOpener = $button.wrap;
+    $CS.show ($CS.savedOffset.x, $CS.savedOffset.y, $button.wrap);
+    addClass($CS.lastOpener,"consultsystems_button_preopen");
+    setTimeout(function(){
+      removeClass($CS.lastOpener,"consultsystems_button_preopen");
+    },555)
+  }
+
+  
+
+
+  $CS.styleInit = function () {
+    styleTag ($CS.defaultStyle);
+  }
+
+
+
+
+
+
+
+
+
+  $CS.fixed  = function () { $CS.isFixed = true; return this; }
+  $CS.static = function () { $CS.isFixed = false; return this; }
+
+
+  $CS.show = function (x, y, from_x, from_y) {
+    
+    if ('ontouchstart' in document.documentElement) { $CS.touchSupport = true }
+
+    $CS.opened = true;
+
+    $CS.fixedSupport =  browserPositionFixed(); //false; //
+
+    if (!$CS.fixedSupport) {
+      $CS.scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    }
+
+    var ev = false;
+
+    if (arguments.length==1 && isClickEvent(arguments[0])) { ev = arguments[0] }
+    if (arguments.length==3 && isClickEvent(arguments[2])) { ev = arguments[2] }
+
+    if (!ev && window.event) { ev = window.event }
+
+    if (arguments.length==1 && typeof arguments[2] == "object" && arguments[2].nodeType==1) {
+      var obj = arguments[0];
+      x = from_x = obj.offsetLeft;
+      y = from_y = obj.offsetTop;
+    } 
+
+    else if (arguments.length==3 && typeof arguments[2] == "object" && arguments[2].nodeType==1) {
+      var obj = arguments[2];
+      from_x = obj.offsetLeft;
+      from_y = obj.offsetTop;
+    } 
+
+    else if (arguments.length==2 && ( ev && (ev.target || ev.srcElement) )) {
+      var obj = ev.target || ev.srcElement;
+      from_x = obj.offsetLeft;
+      from_y = obj.offsetTop;
+    }
+
+    else if (!obj && ev && (ev.target || ev.srcElement)) {
+      var obj = ev.target || ev.srcElement;
+    } 
+
+
+    if (obj && obj.offsetWidth && obj.offsetHeight) {
+      from_x = from_x + obj.offsetWidth/2;
+      from_y = from_y + obj.offsetHeight/2;
+    }
+
+
+    $CS.opener = { x: from_x, y: from_y, fixed: (obj && hasClass(obj,$CS.fixedClass) || $CS.isFixed) ? true : false }
+
+    if (!$CS.opener.fixed) {
+      from_y -= (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
+    }
+
+    x = x || from_x;
+    y = y || from_y;
+
+    $CS.offset = { 
+      x: $CS.savedOffset.x || x || 0, 
+      y: $CS.savedOffset.y || y || 0
+    }
+
+    if ($CS.savedOffset.x===0) { $CS.offset.x = 0 }
+    if ($CS.savedOffset.y===0) { $CS.offset.y = 0 }
+      
+    var postop = $CS.offset.y;
+
+    if (!$CS.fixedSupport && $CS.scrolltop) {
+      postop+=$CS.scrolltop;
+    }
+
+    browserWindow();
+
+
+    if (!$CS.div) {
+      $CS.div = document.createElement('div');
+      $CS.div.id="consultsystems";
+
+      $CS.div.style.width = $CS.min[0]+"px";
+      $CS.div.style.height = $CS.min[1]+"px";
+
+      var cstitle = $CS.style.windowTitle;
+      $CS.div.innerHTML = '<div class="consultsystems_widget" id="consultsystems_widget"><div id="consultsystems_iframe_div" class="consultsystems_iframe_div"><iframe name="consultsystems_iframe" id="consultsystems_iframe" onload="window.ConsultSystems.iframeonload();" src="'+$CS.iframeSrc+'" frameborder="0" border="0" width="100%" height="100%" scrolling="no"></iframe><div id="consultsystems_iframe_over" class="consultsystems_iframe_over"></div><div id="consultsystems_iframe_loading" class="consultsystems_iframe_loading"></div></div><div class="consultsystems_bottom"><b></b><strong></strong></div><div class="consultsystems_shadows"><div class="consultsystems_shadow_lefttop"></div><div class="consultsystems_shadow_righttop"></div><div class="consultsystems_shadow_right"></div><div class="consultsystems_shadow_rightbottom"></div><div class="consultsystems_shadow_bottom"></div><div class="consultsystems_shadow_leftbottom"></div><div class="consultsystems_shadow_left"></div></div><div id="consultsystems_resizer" class="consultsystems_resizer"></div><div class="consultsystems_title"><b></b><strong id="consultsystems_title"><span>'+cstitle+'</span></strong><a class="consultsystems_close" onclick="ConsultSystems.hideWindow(); return false"><i></i></a><a class="consultsystems_end" onclick="ConsultSystems.endDialog();"><i></i></a></div></div>';
+      
+      $CS.div.className = 'consultsystems';
+
+      if ($CS.fixedSupport) {
+        $CS.div.className+=' consultsystems_fixed'
+      }
+
+      if (window.CSEditorMode) {
+        $el("export-preview").appendChild($CS.div);
+        $CS.div.style.position = "absolute"
+      } else {
+        document.body.appendChild($CS.div);
+      }
+
+      $CS.sizes = {
+        titleHeight: 37,
+        bottomHeight: 12
+      }
+
+
+      if (!window.CSEditorMode) {
+        var dragndrop = new drag("dragndrop");
+
+        dragndrop.init({
+          id: "consultsystems_title",
+          target: $CS.div.id,
+          min: $CS.min,
+          max: $CS.max
+        });
+
+        var resizer = new drag("resize");
+
+        resizer.init({
+          id: "consultsystems_resizer",
+          target: $CS.div.id,
+          min: $CS.min,
+          max: $CS.max
+        });
+      }
+
+      
+      if (!$CS.fixedSupport) {
+        addEvent (window, "scroll", function(e){
+          $CS.scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          if ($CS.div){
+            $CS.div.style.top = ($CS.offset.y + $CS.scrolltop)+"px";
+          }
+        });
+      }
+      
+      addEvent (window, "resize", function(e){
+        shake();
+      });
+    } 
+
+
+    else {
+      removeClass($CS.div,"consultsystems_closed");
+    }
+
+    var w = $CS.savedSize[0] || parseFloat($CS.div.offsetWidth)  || $CS.min[0];
+    var h = $CS.savedSize[1] || parseFloat($CS.div.offsetHeight) || $CS.min[1];
+
+    if ($CS.fixedSupport) {
+
+      if ($CS.opener) {
+        var ho = {};
+      } else {
+        var ho = hiddenOffsetDetermine(w,h);
+      }
+
+      divpos (from_x||ho.left||0, (from_y||ho.top||0)+$CS.scrolltop, 0, 0);
+
+      var sht = 0;
+
+      if (!window.CSEditorMode && !$CS.preopen){
+        addClass($CS.div,"consultsystems_hidden");
+        setTimeout(function(){addClass($CS.div,"consultsystems_pre")},2);
+        sht = 15;
+      }
+
+      setTimeout(show,sht);
+    } 
+
+    else {
+      show();
+    }
+
+
+    function show () {
+        
+       if(typeof(window.webconsult_clientinfo) != "undefined"){
+            
+            getJSONP($CS.urlParams+"&site_id=3046&params="+encodeURIComponent(JSON.stringify(window.webconsult_clientinfo))+"&rnd="+$CS.getUnixTime(),$CS.callbackParams, function(data){
+                
+            }); 
+      }
+        
+      if($CS.needReload) {
+        document.getElementById('consultsystems_iframe').src = document.getElementById('consultsystems_iframe').src;
+        $CS.needReload = false;
+      }
+      postop = $CS.offset.y+$CS.scrolltop;
+      divpos ($CS.offset.x, postop, w, h);
+      addClass($CS.div,"consultsystems_visible");
+      setTimeout(function(){removeClass($CS.div,"consultsystems_pre");adjust()},333);
+      var d = new Date();
+      var n = new Date(d.getTime()+1000*3600);
+      setCookie("bubbleclose","1", {
+            expires: n, path: "/"
+          });
+      
+      
+      
+      shake ();
+      
+    }
+    
+    
+    
+    
+    
+    
+
+    if ($CS.toggleHide) {
+      $CS.hideTarget();
+
+
+    }
+    
+  } 
+
+  $CS.showWindow = $CS.show;
+
+  $CS.hide = function (x, y, from_x, from_y) { 
+
+    if (window.CSEditorMode) {return false;}
+
+    $CS.opened = false;
+    $CS.preopen = false;
+
+    var d = new Date();
+    var n = new Date(d.getTime()+1000*3600*24*30);
+    setCookie("consultsystemswindow", "hide|"+$CS.savedOffset.x+"|"+$CS.savedOffset.y+"|"+$CS.savedSize[0]+"|"+$CS.savedSize[1], {
+      expires: n, path: "/"
+    });
+
+    if ($CS.div) {
+
+      var with_arguments = true;
+
+      if (arguments.length==1 && typeof arguments[2] == "object" && arguments[2].nodeType==1) {
+        var obj = arguments[0];
+        x = from_x = obj.offsetLeft;
+        y = from_y = obj.offsetTop;
+      } 
+
+      else if (arguments.length==3 && typeof arguments[2] == "object" && arguments[2].nodeType==1) {
+        var obj = arguments[2];
+        from_x = obj.offsetLeft;
+        from_y = obj.offsetTop;
+      } 
+
+      else {
+        with_arguments = false;
+        from_x = $CS.opener.x;
+        from_y = $CS.opener.y;
+      }
+
+
+      if (!$CS.opener.fixed) {
+        from_y -= (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
+      }
+      
+
+      x = x || from_x;
+      y = y || from_y;
+
+      var w = parseFloat($CS.div.offsetWidth)  || $CS.min[0];
+      var h = parseFloat($CS.div.offsetHeight) || $CS.min[1];
+
+      if ($CS.fixedSupport) {
+        addClass($CS.div,"consultsystems_pre");
+        removeClass($CS.div,"consultsystems_visible");
+        setTimeout(hide,5);
+      } else {
+        hide();
+        addClass($CS.div,"consultsystems_closed")
+      }
+    }
+
+    function hide (){
+      
+      if (with_arguments) {
+        var ho = hiddenOffsetDetermine(w,h);
+      } else {
+        var ho = {}
+      }
+
+
+      divpos (from_x||ho.left||0, (from_y||ho.top||0)+$CS.scrolltop, 0, 0);
+      addClass($CS.div,"consultsystems_hidden");
+      setTimeout(function(){
+        removeClass($CS.div,"consultsystems_pre");
+        addClass($CS.div,"consultsystems_closed");
+        $CS.div.style.width = w+"px";
+        $CS.div.style.height = h+"px";
+      },333);
+    }
+
+    if ($CS.toggleHide) {
+      $CS.showTarget ();
+    }
+  }
+
+  $CS.hideWindow = $CS.hide;
+  
+  $CS.endDialog = function(){
+    
+    if(confirm("Вы действительно хотите закончить диалог?")){
+        getJSONP($CS.urlClose+"&site_id=3046&rnd="+$CS.getUnixTime(),$CS.callbackClose, function(data){
+            if(data.data==true){
+                $CS.hideWindow();
+                $CS.needReload = true;
+            }
+        });
+    }
+  }
+
+  $CS.toggle = function () {
+    if ($CS.opened) {
+      $CS.hide.apply(this, arguments);
+    } else {
+      $CS.show.apply(this, arguments);
+    }
+  }
+
+  $CS.showTarget = function () {
+    $CS.openTarget();
+    setTimeout(function(){
+      removeClass ($CS.lastOpener, "consultsystems_button_hidden");
+    },5)
+    
+  }
+  
+  $CS.getUnixTime = function () {
+    d = new Date();
+    return d.getTime();
+  }
+
+  $CS.hideTarget = function () {
+    addClass ($CS.lastOpener, "consultsystems_button_hidden");
+    setTimeout($CS.closeTarget, 500)
+  }
+
+  $CS.openTarget = function () { removeClass ($CS.lastOpener, "consultsystems_button_closed") }
+  $CS.closeTarget = function () { addClass ($CS.lastOpener, "consultsystems_button_closed") }
+
+  $CS.iframeRestyle = function () {
+    window.$CSI = window.consultsystems_iframe.ConsultSystemsIframe;
+    $CSI.style.fontMessage = $CS.style.windowFontMessage;
+    $CSI.style.fontClient  = $CS.style.windowFontClient; 
+    $CSI.style.fontCons    = $CS.style.windowFontCons;
+    $CSI.style.fontSystem  = $CS.style.windowFontSystem;
+    $CSI.sendOnEnter  = $CS.style.windowSendOnEnter;
+    $CSI.restyle();
+  }
+
+
+  $CS.iframeonload = function () {
+    addClass($el("consultsystems_iframe_loading"),"consultsystems_iframe_loaded");
+    $CS.iframe = window.consultsystems_iframe;
+    if (window.CSEditorMode && window.consultsystems_iframe) {
+      $CS.iframeRestyle()
+    }
+  }
+
+  function isClickEvent (e) {
+    return (e && typeof e=="object" && e.type=="click");
+  }
+
+
+  function divpos (x,y,w,h) {
+    $CS.div.style.left = x+"px";
+    $CS.div.style.top = y+"px";
+    $CS.div.style.width = w+"px";
+    $CS.div.style.height = h+"px";
+  }
+
+
+
+  function hiddenOffsetDetermine (w,h) {
+    var offsetLeft = $CS.offset.x;
+    var offsetRight = $CS.window.innerWidth - $CS.offset.x - (parseFloat($CS.div.offsetWidth) || $CS.min[0])
+
+    var off = {};
+
+    if (offsetLeft>=offsetRight) {
+      off.top = 0;
+      off.left = $CS.window.innerWidth+w;
+    } else {
+      off.top = 0;
+      off.left = -w;
+    }
+
+    return off;
+  }
+
+  
+
+
+  function shake () {
+    browserWindow();
+    
+    var w = $CS.savedSize[0] || parseFloat($CS.div.offsetWidth)  || $CS.min[0];
+    var h = $CS.savedSize[1] || parseFloat($CS.div.offsetHeight) || $CS.min[1];
+
+    if (w > $CS.window.innerWidth)  { w = $CS.window.innerWidth; }
+    if (h > $CS.window.innerHeight) { h = $CS.window.innerHeight; }
+    
+    if (w < $CS.min[0]) {w = $CS.min[0]}
+    if (h < $CS.min[1]) {h = $CS.min[1]}
+
+    $CS.div.style.width = w+"px";
+    $CS.div.style.height= h+"px";
+
+    $CS.savedSize = [w,h];
+
+    autoDrag ({target: $CS.div, width: w, height: h}, $CS.offset.x, $CS.offset.y+$CS.scrolltop);
+  }
+  
+
+
+
+
+
+
+  function $el (e) {
+    return document.getElementById(e);
+  }
+
+
+
+
+
+  function adjust () {
+    if ($CS.isIE7) {   
+      var iframeHeight = ($CS.div.offsetHeight||parseInt($CS.div.style.height))-($CS.sizes.titleHeight+$CS.sizes.bottomHeight);
+      $el("consultsystems_iframe").style.height = iframeHeight+"px";
+      $el("consultsystems_iframe_div").style.height = (iframeHeight+4)+"px";
+      $el("consultsystems_iframe_over").style.height = iframeHeight+"px";
+      $el("consultsystems_iframe_loading").style.height = iframeHeight+"px";
+    }
+
+
+  }
+
+
+  function addClass(o, c){
+    if (o) {
+      var re = new RegExp("(^|\\s)" + c + "(\\s|$)", "g")
+      if (re.test(o.className)) return
+      o.className = (o.className + " " + c).replace(/\s+/g, " ").replace(/(^ | $)/g, "")
+    }
+  }
+   
+  function removeClass(o, c){
+    if (o) {
+      var re = new RegExp("(^|\\s)" + c + "(\\s|$)", "g")
+      o.className = o.className.replace(re, "$1").replace(/\s+/g, " ").replace(/(^ | $)/g, "")
+    }
+  }
+
+  function hasClass (obj, className) {
+    if (typeof obj == 'undefined' || obj==null || !RegExp) { return false; }
+    var re = new RegExp("(^|\\s)" + className + "(\\s|$)");
+    if (typeof(obj)=="string") {
+      return re.test(obj);
+    }
+    else if (typeof(obj)=="object" && obj.className) {
+      return re.test(obj.className);
+    }
+    return false;
+  }
+
+
+  function browserWindow () {
+
+    var winw, winh,
+        dbody = document.body,
+        delem = document.documentElement;
+        ww = window;
+
+    if (dbody && dbody.offsetWidth) {
+      winw = dbody.offsetWidth;
+      winh = dbody.offsetHeight;
+    }
+    if (document.compatMode=='CSS1Compat' && delem && delem.offsetWidth ) {
+      winw = delem.offsetWidth;
+      winh = delem.offsetHeight;
+    }
+    if (ww.innerWidth && ww.innerHeight) {
+      winw = ww.innerWidth;
+      winh = ww.innerHeight;
+    }
+
+    //console.log(dbody.offsetHeight, delem.offsetHeight, ww.innerHeight)
+
+    var dcw = dbody.clientWidth;
+    var dch = dbody.clientHeight;
+    var ddcw = delem.clientWidth;
+    var ddch = delem.clientHeight;
+
+    $CS.window.width = winw;
+    $CS.window.height = winh;
+
+    if (ddcw > dcw && ddcw < winw) { 
+      $CS.window.innerWidth = ddcw; 
+    } else {
+      $CS.window.innerWidth = dcw;
+    }
+
+
+    if ((ddch > dch && ddch <= winh) || (ddch < dch && ddch > 0)) {
+      $CS.window.innerHeight = ddch;
+    } else {
+      $CS.window.innerHeight = dch;
+    }
+
+    //console.log($CS.window.innerHeight)
+  }
+
+  function browserPositionFixed () {
+    var testDiv = document.createElement("div");
+    testDiv.id = "testingPositionFixed";
+    testDiv.style.position = "fixed";
+    testDiv.style.top = "0px";
+    testDiv.style.right = "0px";
+    document.body.appendChild(testDiv);
+    var offset = 1;
+    var supported = false;
+    if (typeof testDiv.offsetTop == "number") {
+      if (testDiv.offsetTop != null) {
+        if (testDiv.offsetTop != "undefined") {
+          offset = parseInt(testDiv.offsetTop);
+        }
+      }
+    }
+    if (offset === 0) {
+      supported = true;
+    }
+
+    document.body.removeChild(testDiv)
+    return supported;
+  }
+
+  function browserQuirksMode (){
+    if (document.createElement) {
+      var el = document.createElement('div');
+      if (el && el.style) {
+        el.style.width = '1';
+      }
+      return el.style.width === '1px';
+    }
+  }
+
+  function drag (type) {
+    this.type = type;
+    this.md = false;
+  }
+
+  drag.prototype = {
+
+    init: function(params) {
+      this.params = params;
+      this.elem = $el(this.params.id);
+      this.target = $el(this.params.target);
+      this.elem.onmousedown = this._mouseDown.bind(this);
+
+      if ($CS.touchSupport) {
+        this.elem.ontouchstart = this._mouseDown.bind(this);
+      }
+
+    },
+
+    _mouseDown: function(e) {
+
+      this.md = true;
+
+      browserWindow ();
+
+      e = e || window.event;
+
+      this.elem.onselectstart = function(){ return false };
+      this._event_docMouseMove = this._docMouseMove.bind(this);
+      this._event_docMouseUp = this._docMouseUp.bind(this);
+
+      if (this.onstart) this.onstart();
+
+      this.x = e.clientX||e.pageX;
+      this.y = e.clientY||e.pageY;
+
+      if (e.type=="touchstart") {
+        this.x = event.touches[0].pageX;
+        this.y = event.touches[0].pageY;
+      }
+
+      this.left = parseFloat(this.target.offsetLeft);
+      this.top = parseFloat(this.target.offsetTop);
+
+      this.width = parseFloat(this.target.offsetWidth);
+      this.height = parseFloat(this.target.offsetHeight);
+
+      addEvent(document, 'mousemove', this._event_docMouseMove);
+      addEvent(document, 'mouseup', this._event_docMouseUp);
+
+      if ($CS.touchSupport) {
+        addEvent(document, 'touchmove', this._event_docMouseMove);
+        addEvent(document, 'touchend', this._event_docMouseUp);
+      }
+
+      $CS.offset = {
+        x: this.left,
+        y: this.top
+      }
+
+      addClass($el("consultsystems_iframe_over"),"consultsystems_iframe_over_show");
+      return false;
+    },
+    
+    _docMouseMove: function(e) {
+      if (this.md) {
+        this.setValuesClick(e);
+        if (this.ondrag) this.ondrag();
+      }
+    },
+
+    _docMouseUp: function(e) {
+      this.md = false;
+
+      removeEvent(document, 'mousemove', this._event_docMouseMove);
+      if ($CS.touchSupport){removeEvent(document, 'touchmove', this._event_docMouseMove)}
+      if (this.onstop) this.onstop();
+
+      removeEvent(document, 'mouseup', this._event_docMouseUp);
+      if ($CS.touchSupport){removeEvent(document, 'touchend', this._event_docMouseMove)}
+
+      this.width = parseFloat(this.target.offsetWidth);
+      this.height = parseFloat(this.target.offsetHeight);
+      removeClass($el("consultsystems_iframe_over"),"consultsystems_iframe_over_show");
+    },
+    
+    setValuesClick: function(e){
+
+      this.mouseX = e.clientX||e.pageX;
+      this.mouseY = e.clientY||e.pageY;
+
+      if (e.type=="touchmove") {
+        this.mouseX = event.touches[0].pageX;
+        this.mouseY = event.touches[0].pageY;
+      }
+
+      this.X = this.left + this.mouseX - this.x;
+      this.Y = this.top  + this.mouseY - this.y;
+
+
+      if (this.X<0) {this.X = 0}
+      if (this.Y<0) {this.Y = 0}
+      
+
+      if (this.type=="dragndrop") {
+        autoDrag (this, this.X, this.Y);
+      } 
+
+
+      else if (this.type=="resize" ) {
+
+        var w = e.clientX||e.pageX;
+        var h = e.clientY||e.pageY;
+
+        if (e.type=="touchmove") {
+          w = event.touches[0].pageX;
+          h = event.touches[0].pageY - (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
+        }
+
+        w = w - this.left + 5;
+        h = h - this.top + 5;
+
+
+        autoResize (this, w, h);
+      }
+
+    }
+  }
+
+  function autoDrag (wdg, x, y) {
+
+
+    if (y - $CS.scrolltop < 0)  { y = $CS.scrolltop }
+    if (x + wdg.width  > $CS.window.innerWidth)   { x = $CS.window.innerWidth  - wdg.width }  
+    if (y + wdg.height - $CS.scrolltop > $CS.window.innerHeight)  { y = $CS.window.innerHeight - wdg.height + $CS.scrolltop }
+    
+    $CS.offset = {
+      x: x,
+      y: y-$CS.scrolltop
+    }
+
+    $CS.savedOffset = $CS.offset;
+
+    wdg.target.style.left = x + "px";
+    wdg.target.style.top =  y + "px";
+
+    save();
+  }
+
+
+  function autoResize (wdg, w, h) {
+    var oh = h;
+    h = h+$CS.scrolltop;
+
+    if (w < wdg.params.min[0]) {w = wdg.params.min[0]}  
+    if (w > wdg.params.max[0]) {w = wdg.params.max[0]}
+
+    if (h > wdg.params.max[1]) {h = wdg.params.max[1]}
+    if (h < wdg.params.min[1]) {h = wdg.params.min[1]}    
+
+    if (w + $CS.offset.x > $CS.window.innerWidth)  { w = $CS.window.innerWidth  - $CS.offset.x }  
+    if (h + $CS.offset.y > $CS.window.innerHeight) { h = $CS.window.innerHeight - $CS.offset.y } 
+
+    wdg.X = wdg.left;
+    wdg.Y = wdg.top-$CS.scrolltop;
+    
+    if (w>$CS.window.innerWidth )   { w = $CS.window.innerWidth; }
+    if (h>$CS.window.innerHeight )  { h = $CS.window.innerHeight; }
+  
+    if (w<$CS.min[0]){w=$CS.min[0]}
+    if (h<$CS.min[1]){h=$CS.min[1]}
+
+    wdg.target.style.width =  w+"px";
+    wdg.target.style.height = h+"px";
+
+    $CS.offset = {
+      x: wdg.X,
+      y: wdg.Y
+    }
+
+    $CS.savedSize = [w,h];
+
+    adjust ();
+
+    save();
+  }
+
+
+  var save = debounce(function(){
+    var d = new Date();
+    var n = new Date(d.getTime()+1000*3600*24*30);
+    setCookie("consultsystemswindow", "open|"+$CS.savedOffset.x+"|"+$CS.savedOffset.y+"|"+$CS.savedSize[0]+"|"+$CS.savedSize[1], {
+      expires: n, path: "/"
+    });
+  },333);
+  
+
+
+  // возвращает cookie если есть или undefined
+  function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ))
+    return matches ? decodeURIComponent(matches[1]) : undefined 
+  }
+
+  // уcтанавливает cookie
+  function setCookie(name, value, props) {
+    props = props || {}
+    var exp = props.expires
+    if (typeof exp == "number" && exp) {
+      var d = new Date()
+      d.setTime(d.getTime() + exp*1000)
+      exp = props.expires = d
+    }
+    if(exp && exp.toUTCString) { props.expires = exp.toUTCString() }
+
+    value = encodeURIComponent(value)
+    var updatedCookie = name + "=" + value
+    for(var propName in props){
+      updatedCookie += "; " + propName
+      var propValue = props[propName]
+      if(propValue !== true){ updatedCookie += "=" + propValue }
+    }
+    document.cookie = updatedCookie
+
+  }
+
+  // удаляет cookie
+  function deleteCookie(name) {
+    setCookie(name, null, { expires: -1 })
+  }
+
+  function debounce ( fn, timeout, invokeAsap, ctx ) {
+  
+    if(arguments.length == 3 && typeof invokeAsap != 'boolean') {
+      ctx = invokeAsap;
+      invokeAsap = false;
+    }
+
+    var timer;
+
+    return function() {
+      var args = arguments;
+      ctx = ctx || this;
+
+      invokeAsap && !timer && fn.apply(ctx, args);
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+        !invokeAsap && fn.apply(ctx, args);
+        timer = null;
+      }, timeout);
+
+    }
+  }
+
+  function addEvent(elem, evType, fn) {
+    if (elem.addEventListener) {
+      elem.addEventListener(evType, fn, false);
+    }
+    else if (elem.attachEvent) {
+      elem.attachEvent('on' + evType, fn)
+    }
+    else {
+      elem['on' + evType] = fn
+    }
+  }
+
+  function removeEvent(element, type, handler) {
+    if (element.removeEventListener) {
+      element.removeEventListener(type, handler, false);
+    } else {
+      if (element.events && element.events[type]) {
+        delete element.events[type][handler.$$guid];
+      }
+    }
+  }
+
+
+
+
+  function styleTag (val) {
+    
+    var head = document.getElementsByTagName('head')[0];
+
+    var styletag = $el('consultsystems_style');
+    if (window.CSEditorMode) {
+      if (styletag) {
+        head.removeChild(styletag);
+        styletag = false;
+      }
+    }
+
+    if (styletag) {
+      var append = true;
+      var style = styletag;
+    } else {
+      var append = false;
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      style.id = 'consultsystems_style';
+    }
+
+    var rules = document.createTextNode(val);
+    if (style.styleSheet) { style.styleSheet.cssText = rules.nodeValue }
+    else { style.appendChild(rules) }
+
+    if (!append) {
+      head.appendChild(style);
+    }
+  }
+  
+
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function () {
+
+      function newApply(Constructor, args) {
+        var i = 0, len = args.length, argNames = [];
+        while (i < len) {
+          argNames.push("arg" + i);
+          i++;
+        }
+        argNames = argNames.join(",");
+        return Function("Constructor", argNames, "return new Constructor(" + argNames + ")").apply(window, [Constructor].concat(args));
+      }
+
+      return function (boundThis) {
+        var targetFunc = this, boundArgs = Array.prototype.slice.call(arguments, 1);
+        function boundFunc() {
+          var allArgs, len;
+          function NOP() {}
+          if (boundFunc._protoMagic) {
+            boundFunc._protoMagic = false;
+            NOP.prototype = this;
+            NOP.prototype.constructor = targetFunc;
+            return new NOP;
+          }
+          else {
+            allArgs = boundArgs.concat(Array.prototype.slice.call(arguments));
+            len = allArgs.length;
+          }
+          if (this && this.constructor == boundFunc) {
+            boundFunc._protoMagic = true;
+            NOP.prototype = len > 1 ? newApply(targetFunc, allArgs) : (len ? new targetFunc(allArgs[0]) : new targetFunc);
+            boundFunc.prototype = new NOP;
+            boundFunc.prototype.constructor = boundFunc;
+            return new boundFunc;
+          }
+          return len > 1 ? targetFunc.apply(boundThis, allArgs) : (len ? targetFunc.call(boundThis, allArgs[0]) : targetFunc.call(boundThis));
+        }
+        boundFunc._protoMagic = false;
+        return boundFunc;
+      };
+    }();
+  }
+
+
+  function extend (what, add) {
+    if (!add) { add = {} };
+    if (typeof what == "object" && typeof add == "object") {
+      for (var prop in add) {  
+        what[prop] = add[prop];
+      }
+      return what;
+    }
+  }
+
+
+
+
+  if(document.getElementsByClassName) {
+
+    getElementsByClass = function(classList, node) {    
+      return (node || document).getElementsByClassName(classList)
+    }
+
+  } else {
+
+    getElementsByClass = function(classList, node) {      
+      var node = node || document,
+      list = node.getElementsByTagName('*'), 
+      length = list.length,  
+      classArray = classList.split(/\s+/), 
+      classes = classArray.length, 
+      result = [], i,j
+      for(i = 0; i < length; i++) {
+        for(j = 0; j < classes; j++)  {
+          if(list[i].className.search('\\b' + classArray[j] + '\\b') != -1) {
+            result.push(list[i])
+            break
+          }
+        }
+      }
+    
+      return result
+    }
+  }
+
+
+
+
+  function bindReady(handler){
+
+    var called = false
+
+    function ready() { 
+      if (called) return
+      called = true
+      handler()
+    }
+
+    if ( document.addEventListener ) { 
+      document.addEventListener( "DOMContentLoaded", function(){
+        ready()
+      }, false )
+    } else if ( document.attachEvent ) {
+
+
+      if ( document.documentElement.doScroll && window == window.top ) {
+        function tryScroll(){
+          if (called) return
+          if (!document.body) return
+          try {
+            document.documentElement.doScroll("left")
+            ready()
+          } catch(e) {
+            setTimeout(tryScroll, 0)
+          }
+        }
+        tryScroll()
+      }
+
+
+      document.attachEvent("onreadystatechange", function(){
+        if ( document.readyState === "complete" ) {
+          ready()
+        }
+      })
+    }
+      if (window.addEventListener)
+          window.addEventListener('load', ready, false)
+      else if (window.attachEvent)
+          window.attachEvent('onload', ready)
+  }
+
+
+  function gradientGenerator (from, to, dir) {
+
+    var gr ='background: -moz-linear-gradient('+(dir == "y"?'top':'left')+', '+from+' 0%, '+to+' 100%);';
+        gr+='background: -webkit-gradient(linear, '+(dir == "y"?'left top, left bottom':'left top, right top')+', color-stop(0%,'+from+'), color-stop(100%,'+to+'));';
+        gr+='background: -webkit-linear-gradient('+(dir == "y"?'top':'left')+', '+from+' 0%, '+to+' 100%);';
+        gr+='background: -o-linear-gradient('+(dir == "y"?'top':'left')+', '+from+'  0%, '+to+' 100%);';
+        gr+='background: -ms-linear-gradient('+(dir == "y"?'top':'left')+', '+from+' 0%, '+to+' 100%);';
+        gr+='background: linear-gradient('+(dir == "y"?'top':'left')+', '+from+' 0%,  '+to+' 100%);';
+        gr+="filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='"+from+"', endColorstr='"+to+"', GradientType="+(dir == 'y'? 0:1)+" );";
+        
+    return gr;
+  }
+
+
+
+  function borderGenerator (colors, widths) {
+    var borders = {
+      top: {}, right: {}, bottom: {}, left: {}
+    };
+
+    if (typeof colors == "number" || typeof colors == "string") {
+      borders["top"].color = colors;
+      borders["right"].color = colors;
+      borders["bottom"].color = colors;
+      borders["left"].color = colors;
+    } else if (typeof colors == "object" && colors[0]) {
+      var firstcolor = colors[0];
+      borders["top"].color = colors[0]||firstcolor;
+      borders["right"].color = colors[1]||firstcolor;
+      borders["bottom"].color = colors[2]||firstcolor;
+      borders["left"].color = colors[3]||firstcolor;
+    }
+
+
+    if (typeof widths == "number" || typeof widths == "string") {
+      borders["top"].width = widths||0;
+      borders["right"].width = widths||0;
+      borders["bottom"].width = widths||0;
+      borders["left"].width = widths||0;
+    } else if (typeof widths == "object" && (widths[0]||widths[0]===0)) {
+      var firstborder = widths[0]||0;
+      borders["top"].width = widths[0]||0;
+      borders["right"].width = widths[1]||firstborder||0;
+      borders["bottom"].width = widths[2]||firstborder||0;
+      borders["left"].width = widths[3]||firstborder||0;
+    }
+
+    var raw = 'border-top: solid '+borders["top"].width+"px "+borders["top"].color+';';
+        raw+= 'border-right: solid '+borders["right"].width+"px "+borders["right"].color+';';
+        raw+= 'border-bottom: solid '+borders["bottom"].width+"px "+borders["bottom"].color+';';
+        raw+= 'border-left: solid '+borders["left"].width+"px "+borders["left"].color+';';
+
+    return {
+      obj: borders,
+      raw: raw
+    };
+  }
+
+
+  function getJSONP(url, callback, success) {
+
+    var script = document.createElement('script'),
+        head = document.getElementsByTagName('head')[0] 
+               || document.documentElement;
+
+    window[callback] = function(data) {
+        head.removeChild(script);
+        success && success(data);
+        window[callback] = null;
+    };
+
+    script.src = url.replace('callback=?', 'callback=' + callback);
+
+    head.appendChild(script);
+
+  }
+
+
+
+
+
+})();

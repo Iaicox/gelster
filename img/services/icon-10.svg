@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="52px" height="64px" viewBox="0 0 52 64" enable-background="new 0 0 52 64" xml:space="preserve">
+<g>
+	<g>
+		<polyline fill="none" stroke="#ECAF56" stroke-linecap="round" stroke-miterlimit="10" points="23.041,31.539 22.8,29.682 
+			46.767,29.682 46.408,31.749 		"/>
+		<path fill="none" stroke="#ECAF56" stroke-linecap="round" stroke-miterlimit="10" d="M48.416,32.104
+			c0,6.107-6.511,10.961-13.633,10.961s-13.589-4.854-13.589-10.961H48.416z"/>
+		<path fill="#ECAF56" d="M45.885,31.457l-2.918,23.55c-0.881,0.317-3.945,1.279-8.692,1.279l-0.827,0.006
+			c-0.769,0.008-1.489,0.014-2.068-0.038l-0.498-0.045l-0.018,0.188l0.131,0.825l0.293,0.027c0.412,0.037,0.874,0.047,1.365,0.047
+			c0.261,0,0.53-0.002,0.806-0.005l0.816-0.006c5.881,0,9.21-1.4,9.349-1.461c0.163-0.069,0.277-0.221,0.299-0.397l2.955-23.848
+			L45.885,31.457z"/>
+		<polygon fill="#ECAF56" points="26.239,52.251 23.544,31.631 22.553,31.76 25.23,52.251 		"/>
+	</g>
+	<g>
+		
+			<line fill="none" stroke="#ECAF56" stroke-linecap="round" stroke-miterlimit="10" x1="17.296" y1="8.651" x2="17.296" y2="46.947"/>
+		<path fill="none" stroke="#ECAF56" stroke-linecap="round" stroke-miterlimit="10" d="M18.224,8.749h-1.855V1.894
+			C16.368,1.4,16.783,1,17.296,1l0,0c0.512,0,0.928,0.4,0.928,0.894V8.749z"/>
+		<path fill="none" stroke="#ECAF56" stroke-linecap="round" stroke-miterlimit="10" d="M18.7,53.32h8.66
+			c1.334,0,1.75,0.765,1.818,0.918l0.045,0.096l0.506,3.04c0.017,0.157,0.049,0.698-0.343,1.129
+			c-0.186,0.205-0.527,0.449-1.097,0.449H6.375c-0.89,0-1.402-0.689-1.502-1.331l-0.02-0.127l0.443-2.665
+			c0.013-0.21,0.085-0.687,0.458-1.063c0.202-0.204,0.563-0.446,1.137-0.446h8.975"/>
+		<path fill="none" stroke="#ECAF56" stroke-linecap="round" stroke-miterlimit="10" d="M18.755,55.13
+			c0,0.479-0.661,0.731-1.354,0.755c-0.764,0.026-1.565-0.226-1.565-0.755c0-1.011,0-8.183,0-8.183h2.919
+			C18.755,46.947,18.755,54.406,18.755,55.13z"/>
+	</g>
+</g>
+</svg>
