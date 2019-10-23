@@ -2,7 +2,7 @@
   "short_name": "Gelster",
   "name": "Gelster - профессиональные напольные покрытия",
   "icons": [{
-    "src": "icon.png",
+    "src": "favicon.ico",
     "type": "image/png",
     "sizes": "192x192"
   }],

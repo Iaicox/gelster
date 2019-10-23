@@ -2300,3 +2300,37 @@ html {
     left: 40%;
     top: 10%;
 }
+
+// scrollbar
+
+::-webkit-scrollbar-button {
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:4px;
+    height:0px
+}
+    
+::-webkit-scrollbar-track {
+    background-color:#ecedee
+}
+    
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 0;
+    background-color: #edb056;
+}
+    
+::-webkit-scrollbar-thumb:hover{
+    background-color: #edb056;
+}
+    
+::-webkit-resizer{
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:4px;
+    height:0px
+}
+    
+::-webkit-scrollbar{
+    width: 8px;
+}
