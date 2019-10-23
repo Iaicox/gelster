@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+<g>
+	<g>
+		<polygon fill="#C99E48" points="78.016,51.766 121.552,82.791 121.552,73.501 91.052,51.766 		"/>
+		<polygon fill="#B28A43" points="63.167,51.766 63.167,57.906 121.552,99.51 121.552,90.205 67.604,51.766 		"/>
+		<polygon fill="#986F2B" points="63.167,74.637 113.03,110.152 121.552,110.152 121.552,106.932 63.167,65.334 		"/>
+		<polygon fill="#8B6928" points="63.167,91.34 89.567,110.152 102.622,110.152 63.167,82.043 		"/>
+		<polygon fill="#8B6928" points="63.167,109.984 63.404,110.152 76.445,110.152 63.167,100.693 		"/>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-133.0957" y1="18.5044" x2="48.7255" y2="18.5044" gradientTransform="matrix(0.8144 0.5802 -0.5802 0.8144 191.7456 88.7129)">
+			<stop  offset="0.0345" style="stop-color:#BC9645"/>
+			<stop  offset="0.4221" style="stop-color:#C39C48"/>
+			<stop  offset="1" style="stop-color:#C79F4A"/>
+		</linearGradient>
+		<polygon fill="url(#SVGID_1_)" points="114.523,51.766 101.472,51.766 121.552,66.076 121.552,56.775 		"/>
+	</g>
+	<g>
+		<rect x="25.013" y="29.06" fill="none" width="56.489" height="56.489"/>
+		<polygon fill="#B57C3B" points="65.839,29.06 81.502,29.06 81.502,85.549 25.013,85.549 25.013,69.712 		"/>
+		<polygon fill="#D1D1D1" points="65.839,69.712 25.013,69.712 28.584,66.142 62.671,32.222 65.839,29.06 		"/>
+		<g>
+			<polygon fill="#C99E48" points="81.831,85.549 81.831,29.06 76.086,29.06 76.538,85.549 			"/>
+			<g>
+				<polygon fill="#C99E48" points="70.208,29.06 65.839,29.06 65.839,69.712 63.167,69.712 63.296,85.549 70.656,85.549 				"/>
+			</g>
+			<g>
+				<polygon fill="#C99E48" points="25.013,69.712 25.013,85.549 30.916,85.549 30.789,69.712 				"/>
+			</g>
+			<g>
+				<polygon fill="#C99E48" points="36.665,69.712 36.79,85.549 44.162,85.549 44.037,69.712 				"/>
+			</g>
+			<g>
+				<polygon fill="#C99E48" points="49.915,69.712 50.044,85.549 57.415,85.549 57.29,69.712 				"/>
+			</g>
+		</g>
+		<polygon fill="#959595" points="65.839,69.712 25.013,69.712 28.584,66.142 62.671,66.142 62.671,32.222 65.839,29.06 		"/>
+	</g>
+</g>
+<circle fill="none" stroke="#D1D1D1" stroke-width="4" stroke-miterlimit="10" cx="75.282" cy="74.422" r="70.423"/>
+</svg>

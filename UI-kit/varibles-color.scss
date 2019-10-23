@@ -1,0 +1,22 @@
+$greenMiddle : #586f69;
+$yellowOrange : #e2a459;
+$orange : #edb056;
+
+@mixin mainText(){
+    font-family: 'PT Sans';
+    line-height: 24px;
+    font-size: 16px;
+    color: $greenMiddle;
+}
+
+@mixin titleH1(){
+    font-family: 'PT Sans';
+    font-size: 30px;
+    color: $greenMiddle;
+}
+
+@mixin titleH2() {
+    font-family: 'PT Sans';
+    color: $yellowOrange;
+    font-size: 24px;
+}

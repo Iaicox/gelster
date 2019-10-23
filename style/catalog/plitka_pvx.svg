@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+<g>
+	<g>
+		<polygon fill="#C99E48" points="79.646,57.895 121.412,87.657 121.412,78.748 92.151,57.895 		"/>
+		<polygon fill="#B28A43" points="65.401,57.895 65.401,63.786 121.412,103.697 121.412,94.771 69.657,57.895 		"/>
+		<polygon fill="#986F2B" points="65.401,79.836 113.237,113.908 121.412,113.908 121.412,110.817 65.401,70.912 		"/>
+		<polygon fill="#8B6928" points="65.401,95.86 90.728,113.908 103.253,113.908 65.401,86.941 		"/>
+		<polygon fill="#8B6928" points="65.401,113.746 65.628,113.908 78.139,113.908 65.401,104.833 		"/>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-127.439" y1="23.2573" x2="46.9942" y2="23.2573" gradientTransform="matrix(0.8144 0.5802 -0.5802 0.8144 191.7456 88.7129)">
+			<stop  offset="0.0345" style="stop-color:#BC9645"/>
+			<stop  offset="0.4221" style="stop-color:#C39C48"/>
+			<stop  offset="1" style="stop-color:#C79F4A"/>
+		</linearGradient>
+		<polygon fill="url(#SVGID_1_)" points="114.671,57.895 102.148,57.895 121.412,71.623 121.412,62.7 		"/>
+	</g>
+	<g>
+		<rect x="31.156" y="34.784" fill="none" width="54.193" height="54.338"/>
+		<polygon fill="#B57C3B" points="31.304,34.784 85.35,34.784 85.35,89.122 31.156,89.122 31.156,73.929 		"/>
+		<g>
+			<rect x="80.043" y="34.784" fill="#C99E48" width="5.621" height="54.338"/>
+			<g>
+				<rect x="65.869" y="34.784" fill="#C99E48" width="7.061" height="54.338"/>
+			</g>
+			<g>
+				<polygon fill="#C99E48" points="36.538,34.784 36.538,89.122 43.731,89.122 43.611,34.784 				"/>
+			</g>
+			<g>
+				<rect x="51.14" y="34.784" fill="#C99E48" width="7.071" height="54.338"/>
+			</g>
+		</g>
+	</g>
+</g>
+<circle fill="none" stroke="#D1D1D1" stroke-width="4.0096" stroke-miterlimit="10" cx="75.282" cy="74.847" r="70.592"/>
+</svg>

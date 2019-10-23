@@ -1,3 +1,4 @@
+<?php header("Content-Type:text/html;charset=utf-8");?>
 <!DOCTYPE html>
 <html lang="ru">
     <head>
@@ -9,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="./highslide/highslide.css">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="./haeder/css/header.css">
         <link rel="stylesheet" href="./fonts/fonts.css">
@@ -17,277 +19,7 @@
     </head>
     <body>
         <header>
-            <div class="header-top-background"></div>
-            <div class="header-bottom-background"></div>
-            <div class="popup-menu" id="popup-menu">
-                <li class="popup-menu-list" id="company-mobile"><a href="#" class="popup-menu-list_item">О компании<span class="nav-treug"></span></a></li>
-                <li class="popup-menu-list" id="katalog-mobile"><a href="#" class="popup-menu-list_item">Каталог<span class="nav-treug"></span></a></li>
-                <li class="popup-menu-list"><a href="https://gelster.ru/fotogal.htm" class="popup-menu-list_item">Наши проекты</a></li>
-                <li class="popup-menu-list"><a href="https://gelster.ru/info_pol.htm" class="popup-menu-list_item">Библиотека</a></li>
-                <li class="popup-menu-list"><a href="https://gelster.ru/kontakti.htm" class="popup-menu-list_item">Контакты</a></li>
-            </div>
-            <div class="katalog-menu">
-                <menu class="katalog-menu_list" id="katalog-menu_list">
-                    <li class="katalog-menu_list-item">
-                        <a class="" href="https://gelster.ru/katalog.htm">Каталог</a>
-                    </li>
-                    <li class="katalog-line"></li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/nat-linol.htm" target="_blank">Натуральный линолеум</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_linol.htm" target="_blank">Линолеум ПВХ</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_kovrolin.htm" target="_blank">Ковролин</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="#" target="_blank">Настенные покрытия</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/info.htm" target="_blank">Спортивные покрытия</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/pvh.htm" target="_blank">Плитка ПВХ</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/kov-plitka.htm" target="_blank">Ковровая плитка</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_keramog.htm" target="_blank">Керамогранит</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_himia.htm" target="_blank">Напольная химия</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/grazzash.htm" target="_blank">Система грязезащиты</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_lamin.htm" target="_blank">Напольные плинтусы</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/uslugi.htm" target="_blank">Строительно-монтажные работы</a>
-                    </li>
-                    <li class="katalog-line"></li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/sale.htm" target="_blank">Распродажа</a>
-                    </li>
-                </menu>
-            </div>
-            <div class="company-menu">
-                <menu class="company-menu_list" id="company-menu_list">
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/story.htm">История</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/nat-linol.htm">О нас</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/kompaniya_v_licah.htm">Компания в лицах</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/blago.htm">Благотворительность</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/otziv.htm">Отзывы</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/pressa.htm">Пресса</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/vakansii.htm">Вакансии</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="#">Школа Гельстер</a>
-                    </li>
-                </menu>
-            </div>
-            <div class="katalog-menu_m">
-                <menu class="katalog-menu_list_m">
-                    <li class="katalog-menu_list-item">
-                        <a class="" href="https://gelster.ru/katalog.htm">Каталог</a>
-                    </li>
-                    <li class="katalog-line"></li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/nat-linol.htm" target="_blank">Натуральный линолеум</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_linol.htm" target="_blank">Линолеум ПВХ</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_kovrolin.htm" target="_blank">Ковролин</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="#" target="_blank">Настенные покрытия</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/info.htm" target="_blank">Спортивные покрытия</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/pvh.htm" target="_blank">Плитка ПВХ</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/kov-plitka.htm" target="_blank">Ковровая плитка</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_keramog.htm" target="_blank">Керамогранит</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_himia.htm" target="_blank">Строительная химия</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/grazzash.htm" target="_blank">Система грязезащиты</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/k_lamin.htm" target="_blank">Напольные плинтусы</a>
-                    </li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/uslugi.htm" target="_blank">Строительно-монтажные работы</a>
-                    </li>
-                    <li class="katalog-line"></li>
-                    <li class="katalog-menu_list-item">
-                        <a href="https://gelster.ru/sale.htm" target="_blank">Распродажа</a>
-                    </li>
-                </menu>
-                <img src="./icons/arrow-side.svg" alt="" id="arrow-back_katalog">
-            </div>
-            <div class="company-menu_m">
-                <menu class="company-menu_list_m">
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/story.htm">История</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/novosti.htm">Новости</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/nat-linol.htm">О нас</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/kompaniya_v_licah.htm">Компания в лицах</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/blago.htm">Благотворительность</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/otziv.htm">Отзывы</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/pressa.htm">Пресса</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="https://gelster.ru/vakansii.htm">Вакансии</a>
-                    </li>
-                    <li class="company-menu_list-item">
-                        <a href="#">Школа &laquo;Гельстер&raquo;</a>
-                    </li>
-                </menu>
-                <img src="./icons/arrow-side.svg" alt="" id="arrow-back_company">
-            </div>
-            <div class="header-container">
-                <div class="header-container_top">
-                    <p class="top-text">Ваш гид в мире профессиональных напольных покрытий</p>
-                    <div class="top-navigation">
-                        <div class="zoom-container"><img src="./icons/zoom2.svg" alt="" class="zoom"></div>
-                        <p class="address">
-                            <a href="mailto:info@gelster.ru">info@gelster.ru</a>
-                        </p>
-                        <div
-                            class="ya-site-form ya-site-form_inited_no"
-                            data-bem="{&quot;action&quot;:&quot;https://yandex.ru/search/site/&quot;,&quot;arrow&quot;:false,&quot;bg&quot;:&quot;transparent&quot;,&quot;fontsize&quot;:12,&quot;fg&quot;:&quot;#000000&quot;,&quot;language&quot;:&quot;ru&quot;,&quot;logo&quot;:&quot;rb&quot;,&quot;publicname&quot;:&quot;поиск по gelster.ru&quot;,&quot;suggest&quot;:true,&quot;target&quot;:&quot;_blank&quot;,&quot;tld&quot;:&quot;ru&quot;,&quot;type&quot;:2,&quot;usebigdictionary&quot;:true,&quot;searchid&quot;:2358809,&quot;input_fg&quot;:&quot;#edb056&quot;,&quot;input_bg&quot;:&quot;#ffffff&quot;,&quot;input_fontStyle&quot;:&quot;normal&quot;,&quot;input_fontWeight&quot;:&quot;normal&quot;,&quot;input_placeholder&quot;:&quot;&quot;,&quot;input_placeholderColor&quot;:&quot;#edb056&quot;,&quot;input_borderColor&quot;:&quot;#ffffff&quot;}">
-                            <form
-                                action="https://yandex.ru/search/site/"
-                                method="get"
-                                target="_blank"
-                                accept-charset="utf-8"><input type="hidden" name="searchid" value="2358809"/><input type="hidden" name="l10n" value="ru"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Найти"/></form>
-                        </div>
-                        <style type="text/css">
-                            .ya-page_js_yes .ya-site-form_inited_no {
-                                display: none;
-                            }
-                        </style>
-                        <script type="text/javascript">
-                            (function (w, d, c) {
-                                var s = d.createElement('script'),
-                                    h = d.getElementsByTagName('script')[0],
-                                    e = d.documentElement;
-                                if ((' ' + e.className + ' ').indexOf(' ya-page_js_yes ') === -1) {
-                                    e.className += ' ya-page_js_yes';
-                                }
-                                s.type = 'text/javascript';
-                                s.async = true;
-                                s.charset = 'utf-8';
-                                s.src = (
-                                    d.location.protocol === 'https:'
-                                        ? 'https:'
-                                        : 'http:'
-                                ) + '//site.yandex.net/v2.0/js/all.js';
-                                h
-                                    .parentNode
-                                    .insertBefore(s, h);
-                                (w[c] || (w[c] = [])).push(function () {
-                                    Ya
-                                        .Site
-                                        .Form
-                                        .init()
-                                })
-                            })(window, document, 'yandex_site_callbacks');
-                        </script>
-                        <a
-                            href="https://api.whatsapp.com/send?phone=74996004560&text=%d0%94%d0%be%d0%b1%d1%80%d1%8b%d0%b9%20%d0%b4%d0%b5%d0%bd%d1%8c%21%20%d0%9f%d0%be%d0%bc%d0%be%d0%b3%d0%b8%d1%82%d0%b5%2c%20%d0%bf%d0%be%d0%b6%d0%b0%d0%bb%d1%83%d0%b9%d1%81%d1%82%d0%b0%2c%20%d0%bf%d0%be%d0%b4%d0%be%d0%b1%d1%80%d0%b0%d1%82%d1%8c%20%d0%bf%d0%be%d0%ba%d1%80%d1%8b%d1%82%d0%b8%d0%b5.&source=&data="
-                            target="_blank"
-                            class="whatsapp-link"></a>
-                    </div>
-                </div>
-                <div class="header-container_bottom">
-                    <div class="bottom-navigation">
-                        <nav>
-                            <ul class="bottom-navigation_menu">
-                                <li class="menu-list" id="company">
-                                    <a href="#" class="menu-list_item">О компании<span class="nav-treug"></span></a>
-                                </li>
-                                <li class="menu-list" id="katalog">
-                                    <a href="#" class="menu-list_item">Каталог<span class="nav-treug"></span></a>
-                                </li>
-                                <li class="menu-list">
-                                    <a href="https://gelster.ru/fotogal.htm" class="menu-list_item">Наши проекты</a>
-                                </li>
-                                <li class="menu-list">
-                                    <a href="https://gelster.ru/info_pol.htm" class="menu-list_item">Библиотека</a>
-                                </li>
-                                <li class="menu-list">
-                                    <a href="https://gelster.ru/kontakti.htm" class="menu-list_item">Контакты</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="bottom-address-box">
-                            <div class="address-box_item">
-                                <p>Москва</p>
-                                <p>
-                                    <a href="tel:+74996004560" class="telephone" style="margin-left: 10px;">+7 (499) 600-45-60</a>
-                                </p>
-                            </div>
-                            <div class="address-box_item">
-                                <p>СПб</p>
-                                <p>
-                                    <a href="tel:+78126004560" class="telephone">+7 (812) 600-45-60</a>
-                                </p>
-                            </div>
-                            <div class="address-box_item">
-                                <p>Россия</p>
-                                <p>
-                                    <a href="tel:+78002506727" class="telephone">+7 (800) 250-67-27</a>
-                                </p>
-                            </div>
-                        </div>
-                        <a class="hamburger">
-                            <span></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="header-logo">
-                    <a href="index.htm"><img src="./icons/logo.svg" alt="" class="logo-icon"></a>
-                </div>
-            </div>
+            <? include('./included_files/header.htm'); ?>
         </header>
         <section class="main-section">
             <div class="section-menu_mobile">
@@ -392,10 +124,10 @@
                             <a href="marm_meets_harlekino.htm">Harlekino</a>
                         </li>
                         <li>
-                            <a href="marm_meets_plato.htm">Proust</a>
+                            <a href="marm_meets_proust.htm">Proust</a>
                         </li>
                         <li>
-                            <a href="marm_meets_proust.htm">Plato</a>
+                            <a href="marm_meets_plato.htm">Plato</a>
                         </li>
                     </menu>
                 </div>
@@ -500,10 +232,10 @@
                             <a href="marm_meets_harlekino.htm">Harlekino</a>
                         </li>
                         <li>
-                            <a href="marm_meets_plato.htm">Proust</a>
+                            <a href="marm_meets_proust.htm">Proust</a>
                         </li>
                         <li>
-                            <a href="marm_meets_proust.htm">Plato</a>
+                            <a href="marm_meets_plato.htm">Plato</a>
                         </li>
                     </menu>
                 </div>
@@ -520,6 +252,76 @@
                 allowfullscreen="allowfullscreen"></iframe>
         </div> -->
         <div class="catalog-section">
+                <div id="service-closed_form_one" class="service-closed_form">
+                        <header class="service-head-pay_form">
+                            <h2 class="uppercase">бланк заказа работ</h2>
+                            <div class="close-form" onclick="close_form_service_one()"><img src="./icons/cross.png" alt=""></div>
+                        </header>
+                        <form
+                            class="service-pay_form"
+                            action="send_uslugi.php"
+                            method="POST"
+                            target="_blank">
+                            <label for="fio">Введите Ваше имя:*</label>
+                            <input
+                                type="text"
+                                id="fio"
+                                name="fio"
+                                placeholder="Имя"
+                                title="Введите Ваше имя"
+                                required="required"
+                                oninvalid="this.setCustomValidity('Введите Имя')"
+                                oninput="setCustomValidity('')">
+                            <label for="telephone">Введите телефон для связи:*</label>
+                            <input
+                                type="tel"
+                                id="telephone"
+                                name="tel"
+                                placeholder="+7 ( ___ ) ___-__-__"
+                                title="Введите телефон"
+                                required="required"
+                                oninvalid="this.setCustomValidity('Введите телефон')"
+                                oninput="setCustomValidity('')">
+                            <label for="city">Укажите город:*</label>
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                placeholder="Город"
+                                title="Укажите город"
+                                required="required"
+                                oninvalid="this.setCustomValidity('Укажите ваш город')"
+                                oninput="setCustomValidity('')">
+                            <label for="need_service">Площадь помещения:</label>
+                            <textarea
+                                name="need_service"
+                                id="need_service"
+                                cols="1"
+                                rows="1"
+                                placeholder="Площадь в м²"
+                                title="Площадь помещения"
+                                oninvalid="this.setCustomValidity('Напишите площадь помещения')"
+                                oninput="setCustomValidity('')"></textarea>
+                            <label for="need_article">Требуемый артикул:</label>
+                            <textarea
+                                name="need_article"
+                                id="need_article"
+                                cols="1"
+                                rows="1"
+                                placeholder="Номер артикула"
+                                title="Номер артикула"
+                                oninvalid="this.setCustomValidity('Напишите номер артикула')"
+                                oninput="setCustomValidity('')"></textarea>
+                            <div
+                                class="g-recaptcha"
+                                data-sitekey="6Lc33LgUAAAAAJyG-7MnyrRzuzZ-KJFPhBeC2zCV"></div>
+                            <div class="text-danger" id="recaptchaError"></div>
+                            <p class="service_buttons">
+                                <input type="reset" value="Очистить">
+                                <input type="submit" name="enter" value="Заказать">
+                            </p>
+                        </form>
+                    </div>
             <div class="gallery">
                 <div class="marmoleum-cocoa__gallery">
                     <div class = "exp-block"><img
@@ -537,7 +339,7 @@
                         <p class="video-text">видео-обзор
                             <br>КОЛЛЕКЦИИ</p>
                     </div>
-                    <div class="material">
+                    <div class="material" onclick="open_form_service_one()">
                         <img
                             src="./collection-marmoleum/bulletin board/catalog-in-new_07.jpg"
                             class="material-img"
@@ -550,7 +352,6 @@
                     <a
                         class="watch"
                         href="https://gelster.ru/fotogal.htm"
-                        target="_blank"
                         style="text-decoration: none">
                         <img
                             src="./collection-marmoleum/bulletin board/catalog-in-new_09.jpg"
@@ -598,55 +399,43 @@
                         <div class="treug" id="read-treug"></div>
                     </div>
                 </div>
-                <div class="table">
-                    <div class="table-top">
-                        <div class="table-top-element">
-                            <div class="table-block-name">
-                                <p>Ширина рулона</p>
-                            </div>
-                            <div class="table-block-value">
-                                <p>1,22 м</p>
-                            </div>
-                        </div>
-                        <div class="table-top-element">
-                            <div class="table-block-name">
-                                <p>Толщина покрытия<br>общая</p>
-                            </div>
-                            <div class="table-block-value">
-                                <p>6,0 мм</p>
-                            </div>
-                        </div>
-                        <div class="table-top-element">
-                            <div class="table-block-name">
-                                <p>Длина рулона</p>
-                            </div>
-                            <div class="table-block-value">
-                                <p>&sim; 28 м</p>
-                            </div>
-                        </div>
-                    </div>
-                    <table class="table-specifications" id="spec-table">
-                        <tr class="specification-item">
-                            <td>Общий вес</td>
-                            <td>5,4 кг/м<sup>2</sup></td>
-                        </tr>
-                        <tr class="specification-item">
-                            <td>Стойкость к химикатам</td>
-                            <td>Стоек к растворам кислот, жиров, спиртов. <br>Не устойчив к длительному <br>воздействию щелочей.</td>
-                        </tr>
-                        <tr class="specification-item">
-                            <td>Бактериостатические свойства</td>
-                            <td>есть</td>
-                        </tr>
-                        <tr class="specification-item">
-                            <td>Класс пожарной опасности</p>
-                            <td>КМ4</td>
-                        </tr>
+                <div class="table-block">
+                    <table class="table-one table_act">
+                        <thead class="table-head">
+                            <tr class="table-row-head">
+                                <td>Ширина рулона</td>
+                                <td>Толщина покрытия</td>
+                                <td>Длина рулона</td>
+                            </tr>
+                            <tr class="table-row-body">
+                                <td>1,22/1,83 м</td>
+                                <td><span class="value">6,0 мм</span></td>
+                                <td>&sim; 28 м</td>
+                            </tr>
+                        </thead>
+                        <tbody class="table-specifications">
+                            <tr class="specification-item">
+                                <td>Общий вес</td>
+                                <td></td>
+                                <td>5,4 кг/м<sup>2</sup></td>
+                            </tr>
+                            <tr class="specification-item">
+                                <td>Стойкость к химикатам</td>
+                                <td></td>
+                                <td>Стоек к растворам кислот, жиров, спиртов. <br>Не устойчив к длительному <br>воздействию щелочей.</td>
+                            </tr>
+                            <tr class="specification-item">
+                                <td>Бактериостатические свойства</td>
+                                <td></td>
+                                <td>есть</td>
+                            </tr>
+                            <tr class="specification-item">
+                                <td>Класс пожарной опасности</p>
+                                <td></td>
+                                <td>КМ4</td>
+                            </tr>
+                        </tbody>
                     </table>
-                    <!-- <div class="spec-more" onclick="specOpen()">
-                        <p class="spec-more-text" id="spec-more-text">развернуть все характеристики</p>
-                        <div class="treug" id="spec-treug"></div>
-                    </div> -->
                 </div>
             </div>
             <div class="needs">
@@ -655,7 +444,7 @@
                 </div>
                 <div class="needs-collection">
                     <div class="needs-collection-item">
-                        <a href="https://gelster.ru/himia_kley_linoleum.htm" target="_blank"></a>
+                        <a href="https://gelster.ru/himia_kley_linoleum.htm"></a>
                         <h4>Клей
                         </h4>
                         <img
@@ -664,7 +453,7 @@
                         <p>Клей Форбо 418</p>
                     </div>
                     <div class="needs-collection-item">
-                        <a href="#" target="_blank"></a>
+                        <a href="#"></a>
                         <h4>Шнур</h4>
                         <img
                             src="./icons/desired_items/icon-2.svg"
@@ -672,7 +461,7 @@
                         <p>Виды шнуров для<br>сварки мармолеума</p>
                     </div>
                     <div class="needs-collection-item">
-                        <a href="https://gelster.ru/himia_yhod.htm" target="_blank"></a>
+                        <a href="https://gelster.ru/himia_yhod.htm"></a>
                         <h4>очиститель</h4>
                         <img
                             src="./icons/desired_items/icon-3.svg"
@@ -680,7 +469,7 @@
                         <p>Форбо 888</p>
                     </div>
                     <div class="needs-collection-item">
-                        <a href="https://gelster.ru/plintus_Dollken.htm" target="_blank"></a>
+                        <a href="https://gelster.ru/plintus_Dollken.htm"></a>
                         <h4>Плинтус</h4>
                         <img
                             src="./icons/desired_items/icon-4.svg"
@@ -773,7 +562,7 @@
                     </div>
                     <div class="mobile-collection-item" id="mobile-collection-item">
                         <div class="needs-collection-item-first" id="needs-collection-item-first">
-                            <a href="https://gelster.ru/himia_kley_linoleum.htm" target="_blank"></a>
+                            <a href="https://gelster.ru/himia_kley_linoleum.htm"></a>
                             <h4>Клей</h4>
                             <img
                                 src="./icons/desired_items/icon-1.svg"
@@ -781,7 +570,7 @@
                             <p>Клей Форбо 418</p>
                         </div>
                         <div class="needs-collection-item">
-                            <a href="https://gelster.ru/himia_kley_linoleum.htm" target="_blank"></a>
+                            <a href="https://gelster.ru/himia_kley_linoleum.htm"></a>
                             <h4>Клей</h4>
                             <img
                                 src="./icons/desired_items/icon-1.svg"
@@ -797,7 +586,7 @@
                                 <br>cварки мармолеума</p>
                         </div>
                         <div class="needs-collection-item">
-                            <a href="https://gelster.ru/himia_yhod.htm" target="_blank"></a>
+                            <a href="https://gelster.ru/himia_yhod.htm"></a>
                             <h4>очиститель</h4>
                             <img
                                 src="./icons/desired_items/icon-3.svg"
@@ -805,7 +594,7 @@
                             <p>Форбо 888</p>
                         </div>
                         <div class="needs-collection-item">
-                            <a href="https://gelster.ru/plintus_Dollken.htm" target="_blank"></a>
+                            <a href="https://gelster.ru/plintus_Dollken.htm"></a>
                             <h4>Плинтус</h4>
                             <img
                                 src="./icons/desired_items/icon-4.svg"
@@ -883,7 +672,7 @@
                     </div>
                 </div>
             </div>
-            <p class="marmoleum-header" id="collection">цветовая палитра bulletin board</p>
+            <p class="marmoleum-header" id="collection">цветовая палитра<br>bulletin board</p>
             <div class="marmoleum-collection">
                 <div class="marmoleum-collection-item">
                     <div class="video-act"><img
@@ -1300,7 +1089,7 @@
             </div>
             <div class="info-list">
                 <div class="info-list-item-sale">
-                    <a class="info-link" href="https://gelster.ru/sale.htm" target="_blank"></a>
+                    <a class="info-link" href="https://gelster.ru/sale.htm"></a>
                     <img
                         src="./img/collection-in/collection-sale.jpg"
                         alt="распродажа мармолеума"
@@ -1312,7 +1101,7 @@
                 </div>
                 <div
                     class="info-list-item-recov">
-                    <a class="info-link" href="https://gelster.ru/marmol_ochistka.htm" target="_blank"></a>
+                    <a class="info-link" href="https://gelster.ru/marmol_ochistka.htm"></a>
                     <img
                         src="./img/collection-in/collection-article1.jpg"
                         alt="обновление и восстановление натурального линолеума"
@@ -1327,7 +1116,7 @@
                     </div>
                 <div
                     class="info-list-item-howto">
-                    <a class="info-link" href="https://gelster.ru/sovet_marm.htm" target="_blank"></a>
+                    <a class="info-link" href="https://gelster.ru/sovet_marm.htm"></a>
                     <img
                         src="./img/collection-in/collection-article2.jpg"
                         alt="уход за натуральным линолеумом"
@@ -1367,7 +1156,7 @@
             </div>
             <div class="info-list-mobile">
                 <div class="info-list-item-sale">
-                    <a class="info-link" href="https://gelster.ru/sale.htm" target="_blank"></a>
+                    <a class="info-link" href="https://gelster.ru/sale.htm"></a>
                     <img
                         src="./img/collection-in/collection-sale.jpg"
                         alt="распродажа мармолеума"
@@ -1379,8 +1168,7 @@
                 </div>
                 <a
                     class="info-list-item-howto"
-                    href="https://gelster.ru/sovet_marm.htm"
-                    target="_blank">
+                    href="https://gelster.ru/sovet_marm.htm">
                     <img
                         src="./img/collection-in/collection-article2.jpg"
                         alt="уход за натуральным линолеумом"
@@ -1392,8 +1180,7 @@
                 </a>
                 <a
                     class="info-list-item-video-m"
-                    href="https://youtu.be/9wzbKD6c6eU"
-                    target="_blank">
+                    href="https://youtu.be/9wzbKD6c6eU">
                     <img
                         src="./img/collection-in/mobile1_02.jpg"
                         alt="обновление и восстановление натурального линолеума"
@@ -1406,8 +1193,7 @@
                 </a>
                 <a
                     class="info-list-item-recov-mob"
-                    href="https://gelster.ru/marmol_ochistka.htm"
-                    target="_blank">
+                    href="https://gelster.ru/marmol_ochistka.htm">
                     <img
                         src="./img/collection-in/mobile1_04.jpg"
                         alt="восстановление мармолеума"
@@ -1418,9 +1204,7 @@
                     <p class="link-read">читать</p>
                 </a>
                 <a
-                    class="info-list-item-video-mobile"
-                    href="https://youtu.be/Dgwarg1bnIc"
-                    target="_blank">
+                    class="info-list-item-video-mobile">
                     <img
                         src="./img/collection-in/mobile1_02-08.jpg"
                         alt="видео-обзор"
@@ -1442,7 +1226,9 @@
             </div>
         </div>
     </section>
-    <div id="footer"></div>
+    <footer class="footer">
+        <? include('./included_files/footer.htm'); ?>
+    </footer>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
@@ -1453,9 +1239,4 @@
     <script src="./highslide/highslide-full.js"></script>
     <script src="./haeder/hamburger.js"></script>
     <script src="scriptik.js"></script>
-    <script> 
-        $(function(){
-          $("#footer").load("./footer/footer.htm"); 
-        });
-    </script> 
 </body>
