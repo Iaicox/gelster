@@ -3649,7 +3649,7 @@ tbody{
 }
 
 .photogallery-general header {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_02.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_02.jpg);
 }
 
 .full-width-blocks {
@@ -3696,34 +3696,34 @@ tbody{
 }
 
 .photo-block:nth-child(1) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_04.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_04.jpg);
 }
 .photo-block:nth-child(2) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_07.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_07.jpg);
 }
 .photo-block:nth-child(3) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_09.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_09.jpg);
 }
 .photo-block:nth-child(4) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_13.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_13.jpg);
 }
 .photo-block:nth-child(5) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_14.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_14.jpg);
 }
 .photo-block:nth-child(6) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_15.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_15.jpg);
 }
 .photo-block:nth-child(7) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_19-20.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_19-20.jpg);
 }
 .photo-block:nth-child(7) h2 {
     font-size: 26px;
 }
 .photo-block:nth-child(8) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_21.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_21.jpg);
 }
 .photo-block:nth-child(9) .photo-block--background {
-    background-image: url(/img/photogallery/general/photogallery-ITOG_19.jpg);
+    background-image: url(img/photogallery/general/photogallery-ITOG_19.jpg);
 }
 
 .text-desc-background {
@@ -4117,7 +4117,7 @@ tbody{
 
 /*** photogallery-sport ***/
 .photogallery-sport > header {
-    background-image: url(/img/photogallery/sport/photogallery-in_02.jpg);
+    background-image: url(img/photogallery/sport/photogallery-in_02.jpg);
 }
 .photo-main_window {
     display: -ms-grid;
@@ -4164,7 +4164,7 @@ tbody{
     position: relative;
     width: 100%;
     min-height: 520px;
-    background: url(/img/photogallery/sport/1-01.jpg);
+    background: url(img/photogallery/sport/1-01.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
