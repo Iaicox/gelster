@@ -1,0 +1,304 @@
+<?php header("Content-Type:text/html;charset=utf-8");?>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Фото напольных покрытий в учреждениях культуры</title>
+    <meta name="description" content="На этой странице вы можете посмотреть напольных покрытий в учреждениях культуры &mdash; кинотеатрах, музеях, выставочных центрах.">
+    <meta name="keywords" content="Фото коммерческий линолеум и напольные покрытия в учреждениях культуры">
+    <!-- meta -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#353535">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- User's CSS -->
+    <link rel="stylesheet" href="./plagins/highslide/highslide.css">
+    <link rel="stylesheet" href="./plagins/magnific_popup_master/dist/magnific-popup.css">
+    <link rel="stylesheet" href="./fonts/fonts.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+</head>
+
+<body>
+    <header>
+        <? include('./included_files/header.htm'); ?>
+    </header>
+    <main class="photogallery-culture">
+        <header class="content-header">
+            <section class="main-content">
+                <h1>Учреждения культуры</h1>
+            </section>
+        </header>
+        <div class="main-content photo_in-top_content">
+            <div class="photo-main_window">
+                <div class="big_photo-frame" id="mainPhotoFrame">
+                    <div class="description-cur_project">
+                        <h2 class="name-cur_project" id="curProjectName">Государственный Эрмитаж</h2>
+                        <span class="adress-cur_project" id="curProjectAdress">Санкт-Петербург, Заусадебная, д.37</span>
+                        <p class="text-cur_project" id="curProjectText">На фото однотонный Мармолеум Форбо Walton Uni оформляет экспозицию Эрмитажа. Показатели по износостойкости Marmoleum Forbo в интерьере позволяют использовать его для тяжелых нагрузок, нестандартных экспонатов. На фото видно, насколько мармолеум гибкий и прочный материал, который можно использовать не только как напольное покрытие, но и как фурнитурный материал.</p>
+                    </div>
+                    <div class="big_photo-wrapper">
+                        <img onclick="changeMainPhoto('prev')" src="./img/icons/arrow_right-circle.svg" alt="" class="big_photo-nav-left">
+                        <img onclick="changeMainPhoto('next')" src="./img/icons/arrow_right-circle.svg" alt="" class="big_photo-nav-right">
+                    </div>
+                    <div class="gallery-cur_project">
+                        <img class="active" src="./img/photogallery/culture/1-1.jpg" alt="Фото натурльного линолеума Гельстер">
+                        <img class="" src="./img/photogallery/culture/1-2.jpg" alt="Фото натурльного линолеума Гельстер">
+                        <img class="" src="./img/photogallery/culture/1-3.jpg" alt="Фото натурльного линолеума Гельстер">
+                        <img class="" src="./img/photogallery/culture/1-4.jpg" alt="Фото натурльного линолеума Гельстер">
+                        <img class="" src="./img/photogallery/culture/1-5.jpg" alt="Фото натурльного линолеума Гельстер">
+                    </div>
+                    <h4 class="used_materials-header">Используемые материалы:</h4>
+                    <div class="used_materials-cur_project">
+                        <div class="used_materials-material">
+                            <a href="k_lin_uni.htm" class="used_materials-desc">натуральный линолеум Marmoleum Walton Uni</a>
+                            <p class="used_materials-articals_num">Цвета: 171</p>
+                            <div class="used_materials-articals_img">
+                                <div class="used_materials-item3">
+                                    <a href="./img/forbo/m_uni/171.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                        <img src="./img/forbo/m_uni/171.jpg" alt="Marmoleum Forbo Walton Uni арт. 171">
+                                    </a>
+                                    <p>арт. 171</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="used_materials-material"></div>
+                        <div class="used_materials-fabric">
+                            <img src="./img/logos/logo_forbo.jpg" alt="Marmoleum Forbo Walton Uni">
+                        </div>
+                    </div>
+                </div>
+                <aside>
+                    <nav class="menu-projects_list">
+                        <header>
+                            <h3>реализованные проекты ТСК «Гельстер»</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                <h4>Музеи</h4>
+                            </li>
+                            <li><a href="#" class="active photo_project">Marmoleum Forbo в Эрмитаже</a></li>
+                            <li>
+                                <h4>Выставочные центры</h4>
+                            </li>
+                            <li><a href="#" class="photo_project">Ковровая плитка Apex в Экспофоруме</a></li>
+                            <li>
+                                <h4>Кинотеатры, театры, ДК</h4>
+                            </li>
+                            <li><a href="#" class="photo_project">Коммерческий ковролин в кинотеатре</a></li>
+                            <li><a href="#" class="photo_project">ПВХ плитка Tarkett в ЦДТ &laquo;Хибины&raquo;</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
+            <div class="projects_lib">
+                <h3>Другие реализованные объекты (Учреждения культуры)</h3>
+                <div class="projects_lib-item">
+                    <img src="./img/photogallery/culture/photogallery-in_07.jpg" alt="Фото Marmoleum Forbo Walton Uni в Эрмитаже">
+                    <div class="projects_lib-item--desc">
+                        <h5>Эрмитаж</h5>
+                        <p>г. Санкт-Петербург</p>
+                    </div>
+                    <div id="" class="project_data" hidden>
+                        <h2>Государственный Эрмитаж</h2>
+                        <span>Санкт-Петербург, Заусадебная, д.37</span>
+                        <p>На фото однотонный Мармолеум Форбо Walton Uni оформляет экспозицию Эрмитажа. Показатели по износостойкости Marmoleum Forbo в интерьере позволяют использовать его для тяжелых нагрузок, нестандартных экспонатов. На фото видно, насколько мармолеум гибкий и прочный материал, который можно использовать не только как напольное покрытие, но и как фурнитурный материал.</p>
+                        <div class="flooring_name">
+                            <a href="k_lin_uni.htm" class="used_materials-desc">натуральный линолеум Marmoleum Walton Uni</a>
+                        </div>
+                        <div class="art_nums">
+                            <p class="used_materials-articals_num">Цвета: 171</p>
+                        </div>
+                        <div class="used_materials-articals_img">
+                            <div class="used_materials-item3">
+                                <a href="./img/forbo/m_uni/171.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/forbo/m_uni/171.jpg" alt="Marmoleum Forbo Walton Uni арт. 171">
+                                </a>
+                                <p>арт. 171</p>
+                            </div>
+                        </div>
+                        <div class="fabric">
+                            <img src="./img/logos/logo_forbo.jpg" alt="Marmoleum Forbo Walton Uni">
+                        </div>
+                    </div>
+                </div>
+                <div class="projects_lib-item">
+                    <img src="./img/photogallery/culture/photogallery-in_12.jpg" alt="Фото ковровой плитки Forbo в офисах КВЦ «Экспофорум»">
+                    <div class="projects_lib-item--desc">
+                        <h5>«Экспофорум»</h5>
+                        <p>г. Санкт-Петербург</p>
+                    </div>
+                    <div id="" class="project_data" hidden>
+                        <h2>Офисы КВЦ «Экспофорум»</h2>
+                        <span>г. Санкт-Петербург, Петербургское ш., дом 64/1</span>
+                        <p>На фото ковровая плитка Apex в интерьере. Благодаря своим техническим характеристикам и свойствам покрытие является хорошим решением для конгрессно-выставочного центра «Экспофорум» г. Санкт-Петербурга. При помощи разных цветов ковровой плитки можно создавать необычные дизайнерские решения: сочетать модули, создавая неповторимые комбинации, зонировать пространство, делать яркие акценты в интерьере.</p>
+                        <div class="flooring_name">
+                            <a href="tessera-apex.htm" class="used_materials-desc">ковровая плитка Forbo Tessera Apex</a>
+                        </div>
+                        <div class="art_nums">
+                            <p class="used_materials-articals_num">Цвета: 257, 261, 266</p>
+                        </div>
+                        <div class="used_materials-articals_img">
+                            <div class="used_materials-item1">
+                                <a href="./img/forbo/tessera_apex/257.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/257.jpg" alt="ковровая плитка Forbo Tessera Apex арт. 257">
+                                </a>
+                                <p>арт. 257</p>
+                            </div>
+                            <div class="used_materials-item1">
+                                <a href="./img/forbo/tessera_apex/261.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/261.jpg" alt="ковровая плитка Forbo Tessera Apex арт. 261">
+                                </a>
+                                <p>арт. 261</p>
+                            </div>
+                            <div class="used_materials-item1">
+                                <a href="./img/forbo/tessera_apex/266.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/266.jpg" alt="ковровая плитка Forbo Tessera Apex арт. 266">
+                                </a>
+                                <p>арт. 266</p>
+                            </div>
+                        </div>
+                        <div class="flooring_name">
+                            <a href="tessera-apex.htm" class="used_materials-desc">ковровая плитка Forbo Tessera Apex</a>
+                        </div>
+                        <div class="art_nums">
+                            <p class="used_materials-articals_num">Цвета: 269, 273</p>
+                        </div>
+                        <div class="used_materials-articals_img">
+                            <div class="used_materials-item2">
+                                <a href="./img/forbo/tessera_apex/269.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/269.jpg" alt="ковровая плитка Forbo Tessera Apex арт. 269">
+                                </a>
+                                <p>арт. 269</p>
+                            </div>
+                            <div class="used_materials-item2">
+                                <a href="./img/forbo/tessera_apex/273.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/273.jpg" alt="ковровая плитка Forbo Tessera Apex арт. 273">
+                                </a>
+                                <p>арт. 273</p>
+                            </div>
+                        </div>
+                        <div class="fabric">
+                            <img src="./img/logos/logo_forbo.jpg" alt="ковровая плитка Forbo Tessera Apex">
+                        </div>
+                    </div>
+                </div>
+                <div class="projects_lib-item">
+                    <img src="./img/photogallery/culture/photogallery-in_14.jpg" alt="Фото коммерческого ковролина Форбо Aкцент в кинотеатре">
+                    <div class="projects_lib-item--desc">
+                        <h5>Дом культуры</h5>
+                        <p>г. Черкесск</p>
+                    </div>
+                    <div id="" class="project_data" hidden>
+                        <h2>Дом культуры</h2>
+                        <span>г. Черкесск</span>
+                        <p>Для Дома культуры в городе Черкесск мы подобрали ковровую плитку (на фото). Покрытие использовалось в зале, где проходят концерты, кинопоказы, фестивали и т.д. На фото ковровая плитка Apex в интерьере зала. Благодаря своим свойствам покрытие отлично поглощает ударный шум.</p>
+                        <div class="flooring_name">
+                            <a href="k_kovrolin_akzent.htm" class="used_materials-desc">коммерческий ковролин Форбо Aкцент</a>
+                        </div>
+                        <div class="art_nums">
+                            <p class="used_materials-articals_num">Цвета: 10709</p>
+                        </div>
+                        <div class="used_materials-articals_img">
+                            <div class="used_materials-item3">
+                                <a href="./img/forbo/akzent/10709.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/10709.jpg" alt="коммерческий ковролин Forbo Akzent арт. 10709">
+                                </a>
+                                <p>арт. 10709</p>
+                            </div>
+                        </div>
+                        <div class="fabric">
+                            <img src="./img/logos/logo_forbo.jpg" alt="коммерческий ковролин Forbo Akzent">
+                        </div>
+                    </div>
+                </div>
+                <div class="projects_lib-item">
+                    <img src="./img/photogallery/culture/photogallery-in_15.jpg" alt="Фото виниловой плитки Tarkett в Центре детского творчества «Хибины»">
+                    <div class="projects_lib-item--desc">
+                        <h5>ЦДТ «Хибины»</h5>
+                        <p>г.Кировск</p>
+                    </div>
+                    <div id="" class="project_data" hidden>
+                        <h2>Центр детского творчества «Хибины»</h2>
+                        <span>г. Кировск, пр. Ленина, дом 5</span>
+                        <p>В Центре детского творчества «Хибины» для интерьера мы подобрали плитку ПВХ. На фото это напольное покрытие в интерьере центра. Клиент выбрал плитку ПВХ нескольких цветов, которые сложились в затейливую мозаику, напоминающую этнический узор. Рисунок пола хорошо сочетался с декоративными элементами, использованными в помещении.</p>
+                        <div class="flooring_name">
+                            <a href="k_lin_lounge.htm" class="used_materials-desc">виниловая плитка Tarkett Lounge</a>
+                        </div>
+                        <div class="art_nums">
+                            <p class="used_materials-articals_num">Цвета: Henry, Simple, Delmar</p>
+                        </div>
+                        <div class="used_materials-articals_img">
+                            <div class="used_materials-item1">
+                                <a href="./img/tarkett/lounge/henry.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/henry.jpg" alt="виниловая плитка Tarkett Lounge арт. Henry">
+                                </a>
+                                <p>арт. Henry</p>
+                            </div>
+                            <div class="used_materials-item1">
+                                <a href="./img/tarkett/lounge/simple.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/simple.jpg" alt="виниловая плитка Tarkett Lounge арт. Simple">
+                                </a>
+                                <p>арт. Simple</p>
+                            </div>
+                            <div class="used_materials-item1">
+                                <a href="./img/tarkett/lounge/delmar.jpg" class="" onclick="return hs.expand (this, { captionEval: 'this.thumb.alt' })">
+                                    <img src="./img/photogallery/culture/art/delmar.jpg" alt="виниловая плитка Tarkett Lounge арт. Delmar">
+                                </a>
+                                <p>арт. Delmar</p>
+                            </div>
+                        </div>
+                        <div class="fabric">
+                            <img src="./img/logos/logo_tarkett.jpg" alt="виниловая плитка Tarkett Lounge">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <? include('./included_files/footer.htm'); ?>
+    </footer>
+    <script src="https://mc.yandex.ru/metrika/watch.js" async></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./plagins/magnific_popup_master/dist/jquery.magnific-popup.min.js" async></script>
+    <script src="./plagins/highslide/highslide-full.min.js" async></script>
+    <script src="./js/hamburger.js" async></script>
+    <script src="./js/scriptik.js" async></script>
+    <script src="./js/photogallery.js" async></script>
+    <script>
+        (function(w, d, c) {
+            var s = d.createElement('script'),
+                h = d.getElementsByTagName('script')[0],
+                e = d.documentElement;
+            if ((' ' + e.className + ' ').indexOf(' ya-page_js_yes ') === -1) {
+                e.className += ' ya-page_js_yes';
+            }
+            s.type = 'text/javascript';
+            s.async = true;
+            s.charset = 'utf-8';
+            s.src = (
+                d.location.protocol === 'https:' ?
+                'https:' :
+                'http:'
+            ) + '//site.yandex.net/v2.0/js/all.js';
+            h
+                .parentNode
+                .insertBefore(s, h);
+            (w[c] || (w[c] = [])).push(function() {
+                Ya
+                    .Site
+                    .Form
+                    .init()
+            })
+        })(window, document, 'yandex_site_callbacks');
+
+    </script>
+</body>
+
+</html>

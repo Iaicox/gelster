@@ -32,7 +32,7 @@ for (i = 0; i < projectsData.length; i++) {
 
 
 
-$(".gallery-cur_project")[0].addEventListener('wheel', function(event) {
+/*$(".gallery-cur_project")[0].addEventListener('wheel', function(event) {
     if (event.deltaMode == event.DOM_DELTA_PIXEL) {
       var modifier = 1;
       // иные режимы возможны в Firefox
@@ -50,7 +50,7 @@ $(".gallery-cur_project")[0].addEventListener('wheel', function(event) {
         }
       event.preventDefault();
     }
-  });
+  });*/  // Скрипт горизонтальной прокрутки в галерее под главным фото
 
 if (hash != '') {
     document.getElementById('project_' + hash.split('_')[1]).click();
@@ -69,8 +69,9 @@ $(window).resize(function() {
 
 
 function changeProject(event) {
-    var projectNum, i=0, checkId = true, mainParent, curImg=[];
+    var projectNum, i=0, checkId = true, mainParent, curImg=[], projectsImgSrc, fullProjectsImgSrc;
     var path = event.path || (event.composedPath && event.composedPath()) || iePath(event.target);
+    
     while (checkId) {
         projectNum = path[i].id.split('_')[1];
         if (path[i].id.split('_').includes('project')) {
@@ -94,35 +95,46 @@ function changeProject(event) {
     document.getElementById('curProjectName').innerText = mainParent.children[2].children[0].innerText;
     document.getElementById('curProjectAdress').innerText = mainParent.children[2].children[1].innerText;
     document.getElementById('curProjectText').innerText = mainParent.children[2].children[2].innerText;
-    bigPhoto.style.backgroundImage = 'url("/img/photogallery/' + curFolder + '/' + projectNum + '-01.jpg")';
+    bigPhoto.style.backgroundImage = 'url("/img/photogallery/' + curFolder + '/' + projectNum + '-1.jpg")';
     
     checkId = true;
     i = 1;
+    
     while (checkId) {
+        fullProjectsImgSrc = './img/photogallery/' + curFolder + '/' + projectNum + '-' + i + '.jpg';
+        
         curImg[i] = document.createElement('img');
-        curImg[i].src = './img/photogallery/' + curFolder + '/' + projectNum + '-0' + i + '.jpg';
+        curImg[i].src = './img/photogallery/' + curFolder + '/' + projectNum + '-' + i + '.jpg';
         curImg[i].onerror = function(){
             this.parentNode.removeChild(this);
         };
         curImg[i].className = '';
+        if (i == 1) {
+            curImg[i].className = 'active';
+        }
         curImg[i].alt = mainParent.children[0].alt;
         gallery.appendChild(curImg[i]);
-        i++;
-        if (i == 10) {
+        
+        if (i == 12) {
             checkId = false;
         }
+        
+        i++;
     }
+    
     gallery.children[0].classList.add('active');
     
     
     document.getElementsByClassName('used_materials-cur_project')[0].children[0].innerHTML = '';
     document.getElementsByClassName('used_materials-cur_project')[0].children[1].innerHTML = '';
     document.getElementsByClassName('used_materials-cur_project')[0].children[2].innerHTML = '';
+    
     for (i = 0; i < document.getElementsByClassName('projects_lib-item')[(projectNum-1)].getElementsByClassName('flooring_name').length; i++) {
         document.getElementsByClassName('used_materials-material')[i].appendChild(document.getElementsByClassName('projects_lib-item')[(projectNum-1)].getElementsByClassName('flooring_name')[i].children[0].cloneNode(true));
         document.getElementsByClassName('used_materials-material')[i].appendChild(document.getElementsByClassName('projects_lib-item')[(projectNum-1)].getElementsByClassName('art_nums')[i].children[0].cloneNode(true));
         document.getElementsByClassName('used_materials-material')[i].appendChild(document.getElementsByClassName('projects_lib-item')[(projectNum-1)].getElementsByClassName('used_materials-articals_img')[i].cloneNode(true));
     }
+    
     document.getElementsByClassName('used_materials-fabric')[0].appendChild(document.getElementsByClassName('projects_lib-item')[(projectNum-1)].getElementsByClassName('fabric')[0].cloneNode(true));
     
     turnCount = 0;
@@ -132,6 +144,8 @@ function changeProject(event) {
     if (getInternetExplorerVersion()!==-1) {
         document.body.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
     }
+    
+    window.location.hash = "photoProject_" + projectNum;
     
     return(turnCount);
 }
