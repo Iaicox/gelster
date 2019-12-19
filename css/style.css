@@ -3768,7 +3768,7 @@ tbody{
 .photo-block:nth-child(3n+1) .text-description {
     margin-left: auto;
     padding: 25px 40px 25px 22px;
-    text-align: center;
+    text-align: left;
 }
 .photo-block:nth-child(3n+2) .text-description {
     margin: 0 auto;
@@ -3778,7 +3778,7 @@ tbody{
 .photo-block:nth-child(3n+3) .text-description {
     margin-right: auto;
     padding: 25px 22px 25px 65px;
-    text-align: center;
+    text-align: right;
 }
 
 .text-description h2 {
@@ -3835,6 +3835,7 @@ tbody{
 .photo-block:nth-child(3n+3) .arrow_right-move-left {
     left: 200px;
 }
+/*
 .photo-block:nth-child(3n+1) a:hover .arrow_right-move-left,
 .photo-block:nth-child(3n+1) a:focus .arrow_right-move-left {
     -webkit-transform: rotateZ(-90deg);
@@ -3852,12 +3853,14 @@ tbody{
             transform: rotateZ(-90deg);
     left: 266px;
 }
+*/
 
 @media screen and (max-width: 1200px){
     .full-width-blocks {
         -ms-grid-columns: auto 15px 300px 15px auto;
         grid-template-columns: auto 300px auto;
     }
+/*
     .photo-block:nth-child(3n+1) a:hover .arrow_right-move-left,
     .photo-block:nth-child(3n+1) a:focus .arrow_right-move-left {
         -webkit-transform: translate(-50%) rotateZ(-90deg);
@@ -3875,6 +3878,7 @@ tbody{
                 transform: translate(-50%) rotateZ(-90deg);
         left: 233px;
     }
+*/
 }
 
 @media screen and (max-width: 768px){
@@ -3961,6 +3965,7 @@ tbody{
         -webkit-transform: translate(-50%);
                 transform: translate(-50%);
     }
+/*
     .photo-block:nth-child(3n+1) a:hover .arrow_right-move-left,
     .photo-block:nth-child(3n+1) a:focus .arrow_right-move-left {
         bottom: 150%;
@@ -3987,6 +3992,7 @@ tbody{
         -webkit-transition-delay: 0s, 0.75s;
                 transition-delay: 0s, 0.75s;
     }
+*/
 }
 @media screen and (max-width: 425px) {
     .content-header {
