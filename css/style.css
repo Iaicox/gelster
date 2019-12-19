@@ -4512,9 +4512,8 @@ tbody{
     -webkit-transform: translateY(-50%) translateX(-10px);
             transform: translateY(-50%) translateX(-10px);
     opacity: 1;
-    right: -35px;
     z-index: -1;
-    width: auto;
+    width: 4px;
 }
 .projects_lib {
     width: 100%;
