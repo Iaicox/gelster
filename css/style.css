@@ -4376,6 +4376,7 @@ tbody{
     text-align: right;
 }
 .used_materials-articals_img {
+    min-height: 95.6px;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
