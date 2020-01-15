@@ -247,7 +247,7 @@ html {
   transition: 0.3s;
   height: 100%;
   width: 100%;
-  background-image: url("../img/main-img/index_2_02-04.jpg");
+  background-image: url("../img/pages-name-imgs/index/images/index_2_02-04.jpg");
   background-size: 100% 100%;
 }
 
@@ -256,7 +256,7 @@ html {
   transition: 0.3s;
   height: 100%;
   width: 100%;
-  background-image: url("../img/main-img/index_2_03-05.jpg");
+  background-image: url("../img/pages-name-imgs/index/images/index_2_03-05.jpg");
   background-size: 100% 100%;
 }
 
@@ -265,7 +265,7 @@ html {
   transition: 0.3s;
   height: 100%;
   width: 100%;
-  background-image: url("../img/main-img/index_2_03-06.jpg");
+  background-image: url("../img/pages-name-imgs/index/images/index_2_03-06.jpg");
   background-size: 100% 100%;
 }
 
@@ -274,7 +274,7 @@ html {
   transition: 0.3s;
   height: 100%;
   width: 100%;
-  background-image: url("../img/main-img/index_2_03.jpg");
+  background-image: url("../img/pages-name-imgs/index/images/index_2_03.jpg");
   background-size: 100% 100%;
 }
 
@@ -472,7 +472,7 @@ html {
 }
 
 #section3 .geographic {
-  background-image: url(../img/main-img/index_2_05.jpg);
+  background-image: url(../img/pages-name-imgs/index/images/index_2_05.jpg);
   background-size: 100% 100%;
   height: 100%;
   width: 100%;
@@ -531,6 +531,20 @@ html {
 
 #section3 .geographic .white-arrow-mobile-first {
   display: none;
+}
+
+@media screen and (max-width: 430px) {
+  #section3 .geographic .white-arrow-mobile-first {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 90%;
+    left: 25%;
+    z-index: 2345;
+    -webkit-animation: cursor 2s infinite;
+            animation: cursor 2s infinite;
+  }
 }
 
 #section4 {
@@ -2245,7 +2259,7 @@ html {
     transition: 0.3s;
     height: 100%;
     width: 100%;
-    background-image: url("../img/main-img/index_2_02-m.jpg");
+    background-image: url("../img/pages-name-imgs/index/images/index_2_02-m.jpg");
     background-size: 100% 100%;
   }
   #section1 .section-grid .grid-item .item-img_two {
@@ -2253,7 +2267,7 @@ html {
     transition: 0.3s;
     height: 100%;
     width: 100%;
-    background-image: url("../img/main-img/index_2_03-m.jpg");
+    background-image: url("../img/pages-name-imgs/index/images/index_2_03-m.jpg");
     background-size: 100% 100%;
   }
   #section1 .section-grid .grid-item .item-img_three {
@@ -2261,7 +2275,7 @@ html {
     transition: 0.3s;
     height: 100%;
     width: 100%;
-    background-image: url("../img/main-img/index_2_03-02-m.jpg");
+    background-image: url("../img/pages-name-imgs/index/images/index_2_03-02-m.jpg");
     background-size: 100% 100%;
   }
   #section1 .section-grid .grid-item .item-img_four {
@@ -2269,7 +2283,7 @@ html {
     transition: 0.3s;
     height: 100%;
     width: 100%;
-    background-image: url("../img/main-img/index_2_03-03-m.jpg");
+    background-image: url("../img/pages-name-imgs/index/images/index_2_03-03-m.jpg");
     background-size: 100% 100%;
   }
   #section1 .section-grid .grid-item .item-content {
@@ -2571,7 +2585,7 @@ html {
     overflow-x: scroll;
   }
   #section3 .geographic {
-    background-image: url(../img/main-img/index_2_05.jpg);
+    background-image: url(../img/pages-name-imgs/index/images/index_2_05.jpg);
     background-size: 100% 100%;
     height: 100%;
     width: 300%;

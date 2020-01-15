@@ -2,7 +2,7 @@
 var endSlideMoscow = 0;
 
 $('#first-slide-right').click(function(){
-    if(endSlideMoscow < 6){
+    if(endSlideMoscow < 5){
         var $current = $('#first-img-box').find('.office-photo.office-photo_act');
         $current.removeClass('office-photo_act');
         $current.next('.office-photo').addClass('office-photo_act');

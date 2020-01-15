@@ -7,6 +7,11 @@
 
 html {
   overflow-x: hidden;
+  background-color: white;
+}
+
+body {
+  padding-bottom: 0 !important;
 }
 
 header {
@@ -131,18 +136,24 @@ header {
   margin-bottom: .5rem;
 }
 
-input[placeholder], textarea[placeholder] {
+input[placeholder],
+textarea[placeholder] {
   padding: 10px 5px;
   border: 1px solid #e0e0e0;
   background-color: #fff;
   margin-bottom: 15px;
 }
 
-button, input {
+button,
+input {
   overflow: visible;
 }
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
@@ -153,7 +164,8 @@ button, input, optgroup, select, textarea {
   width: 300px;
 }
 
-input[type="submit"], input[type="reset"] {
+input[type="submit"],
+input[type="reset"] {
   border-radius: 6px;
   background-color: #586f69;
   -webkit-box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.24);
@@ -176,7 +188,8 @@ input[type="submit"], input[type="reset"] {
   justify-content: space-between;
 }
 
-.service-flooring p, .service-our_rules p {
+.service-flooring p,
+.service-our_rules p {
   font-family: "PT Sans";
   color: #374436;
   font-size: 16px;
@@ -185,7 +198,10 @@ input[type="submit"], input[type="reset"] {
   text-align: justify;
 }
 
-[type=reset], [type=submit], button, html [type=button] {
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
   -webkit-appearance: button;
 }
 
@@ -1397,7 +1413,9 @@ input[type="submit"], input[type="reset"] {
   transition-timing-function: cubic-bezier(0.67, 0.01, 0.23, 1);
 }
 
-#slidewrapper, #slidewrapper ul, #slidewrapper li {
+#slidewrapper,
+#slidewrapper ul,
+#slidewrapper li {
   margin: 0;
   padding: 0;
 }
@@ -1464,7 +1482,8 @@ input[type="submit"], input[type="reset"] {
           transform: rotate(-90deg);
 }
 
-#prev-btn, #next-btn {
+#prev-btn,
+#next-btn {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -1472,7 +1491,8 @@ input[type="submit"], input[type="reset"] {
   top: calc(50% - 25px);
 }
 
-#prev-btn:hover, #next-btn:hover {
+#prev-btn:hover,
+#next-btn:hover {
   cursor: pointer;
 }
 
@@ -1741,7 +1761,7 @@ input[type="submit"], input[type="reset"] {
   .main-section .second-block .second-block_container {
     display: -ms-grid;
     display: grid;
-        grid-template-areas: 'big'  'smal';
+        grid-template-areas: 'big' 'smal';
     -ms-grid-columns: 12fr;
         grid-template-columns: 12fr;
     grid-row-gap: 21px;
