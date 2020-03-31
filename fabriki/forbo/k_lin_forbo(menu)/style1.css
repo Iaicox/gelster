@@ -1,0 +1,248 @@
+/* code for base gallery with float divs */
+
+.highslide-wrapper { height: auto !important; }
+
+.highslide-thumbnail {
+	display:inline-block;
+	padding:0 8px 32px;
+	text-align:center;
+	vertical-align:top;
+}
+
+.highslide-image-name {
+	text-align:center;
+/*	color:#666666; */
+	font-size:11px;
+	padding-top:7px;
+}
+
+.highslide-image-name a {
+	text-decoration: none;
+/*	color:#666666;*/
+}
+
+.highslide-image-name a:hover {
+	text-decoration: underline;
+}
+
+
+/* table tr */
+
+
+
+
+
+
+/* highslide native code */
+
+
+
+
+
+.highslide {
+	cursor: url(/shared/highslide-4.1.13/zoomin.cur), pointer;
+	outline: none;
+}
+
+.highslide img {
+	border: 1px solid #aaaaaa;
+}
+
+.highslide:hover img {
+	border: 1px solid #555555;
+}
+
+.highslide-image {
+}
+
+.highslide-image-blur {
+
+}
+
+.highslide-caption {
+	display: none;
+	font-family: Arial, Helvetica;
+	font-size: 13px;
+	padding: 10px;
+	margin: 0px;
+	background-color:white;
+	color: black;
+	text-align:left;
+}
+.highslide-loading {
+	display: block;
+	color: white;
+	font-family: Arial, Helvetica;
+	font-size: 10px;
+	font-weight: normal;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 3px;
+	background-color: black;
+}
+
+a.highslide-credits,
+a.highslide-credits i {
+	padding: 2px;
+	color: silver;
+	text-decoration: none;
+	font-size: 10px;
+}
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+	color: white;
+	background-color: gray;
+}
+.highslide-display-block {
+	display: block;
+}
+.highslide-display-none {
+	display: none;
+}
+
+
+/* code for control bar with left right positioned at bottom right */
+
+.highslide-overlay { display: none; }
+.controlbar { background: url(/shared/highslide/graphics/controlbar-mega1.gif); width: 161px; height: 29px; }
+.controlbar a {	display: block; float: left; margin: 0px 0 0 0px; height: 29px; width: 40px; }
+.highslide-display-block { display: block; }
+.highslide-display-none { display: none; }
+
+
+.buttonup {
+width:88px; 
+height:118px;
+position:fixed;
+bottom:20px;
+right:50px;
+opacity: 0.5;
+
+}
+
+/* зеленая ссылка*/
+
+a {
+   color: #003300;
+   text-decoration: none;
+   transition: 0.3s all;
+   
+   }
+a:hover {
+   color: #800000;
+   text-decoration: none;
+   
+   
+}   
+   
+   
+.podkatalog {
+   color: #003300;
+   text-decoration: none;
+   transition: 0.3s all;
+   
+   }  
+    
+.podkatalog:hover {
+   color: #800000;
+   text-decoration: none;
+   padding-left: 10px;
+   
+   } 
+.podkatalog_ul li {
+   color: #003300;
+   text-decoration: none;
+   transition: 0.3s all;
+
+}
+
+.podkatalog_ul li:hover {
+   color: #800000;
+   text-decoration: none;
+   padding-left: 10px;
+   
+   } 
+   
+.podkatalog_ul a {
+   color: #003300;
+   text-decoration: none;
+   transition: 0.3s all;
+
+}
+
+.podkatalog_ul a:hover {
+   color: #800000;
+   text-decoration: none;
+   padding-left: 10px;
+   
+   }  
+
+
+/* КОНЕЦ! зеленая ссылка*/
+
+/* синий цвет текста */
+
+a#blue {
+   color: #000080;
+   text-decoration: none;
+   transition: 0.3s all;
+   
+}
+
+a#blue:hover {
+   color: #800000;
+   text-decoration: none;
+  
+}
+
+a#blue:hover img  {
+    
+   background: #C2C2C2; 
+   opacity: 0.8;
+   
+}
+
+/* КОНЕЦ! синий цвет текста */
+
+/* зеленый цвет текста */
+
+a#other:hover img  {
+    
+   background: #C2C2C2; 
+   opacity: 0.8;
+   
+}
+
+a#other {
+   color: #003300;
+   text-decoration: none;
+   
+}
+
+a#other:hover {
+   color: #800000;
+   text-decoration: none;
+}
+
+/* КОНЕЦ! зеленого цвета текста */
+
+textarea {
+  width: 500px;
+  height: 50px;  
+  border:#003300 2px solid;
+  border-radius: 7px;
+}
+
+input {
+  width: 500px;
+  height: 25px;  
+  border:#003300 2px solid;
+  border-radius: 7px;
+}
+
+.kapcha {
+  width: 500px;
+  height: 25px;  
+  border:#003300 2px solid;
+  border-radius: 7px;
+}
